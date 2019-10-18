@@ -6,4 +6,7 @@ which includes list of medical examination and services that can be done at this
 Information about examination and services includes price and customer ratings and reviews. 
 Users can search for medical facilities where they can do certain analysis and examinations. 
 
-### Created by Mihaylova Yiliya and Shakirova Gulnas
+#### Links:
+##### Trello https://trello.com/b/mhw7snz4/medical-web-site
+
+## Created by Mihaylova Yuliya and Shakirova Gulnaz
