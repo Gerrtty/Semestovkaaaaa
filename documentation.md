@@ -1,6 +1,6 @@
 # Medical Web site
 
-## Requirements:
+## Requirements from PO:
 Web site about medical institutions, where users can view information about institutions, 
 which includes list of medical examination and services that can be done at this institution and address of this institution (and ... ?)
 Information about examination and services includes price and customer ratings and reviews. 
@@ -9,4 +9,4 @@ Users can search for medical facilities where they can do certain analysis and e
 #### Links:
 ##### Trello https://trello.com/b/mhw7snz4/medical-web-site
 
-## Created by Mihaylova Yuliya and Shakirova Gulnaz
+## Created by Mihaylova Yuliya and Shakirova Gulnaz meow ^_^
