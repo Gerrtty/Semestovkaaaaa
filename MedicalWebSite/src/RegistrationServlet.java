@@ -4,10 +4,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.*;
+import java.util.stream.Stream;
 
 public class RegistrationServlet extends HttpServlet {
 
@@ -15,21 +16,64 @@ public class RegistrationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher view = req.getRequestDispatcher("registration.html");
         view.forward(req, resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "pass");
-        String z = "select num from semestrovka.User";
-        PreparedStatement pr = connection.prepareStatement(z);
-        ResultSet resultSet = pr.executeQuery();
-        resultSet.next();
-
         String firstname = req.getParameter("firstname");
-        String lasttname = req.getParameter("lasttname");
+        String lastname = req.getParameter("lastname");
+        String email = req.getParameter("email");
+        String password = hash(req.getParameter("pwd"));
 
-        connection.close();
+
+        addToDataBase(firstname, lastname, email, password);
     }
 
+    private void addToDataBase(String firstname, String lastname, String email, String password) {
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "pass");
+        } catch (SQLException e) {
+            System.out.println("Connection to data base failed");
+        }
+
+
+
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    private static String hash(String s) {
+        StringBuffer stringBuffer = new StringBuffer();
+
+        try {
+
+            byte[] data = s.getBytes("UTF-8");
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest.update(data);
+            byte[] digest = messageDigest.digest();
+
+
+            for (int i = 0; i < digest.length; i++) {
+                stringBuffer.append((char)digest[i]);
+            }
+
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+
+        return stringBuffer.toString();
+    }
 
 }
