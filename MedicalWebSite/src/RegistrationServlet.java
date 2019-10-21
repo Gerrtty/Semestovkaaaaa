@@ -8,7 +8,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
-import java.util.stream.Stream;
 
 public class RegistrationServlet extends HttpServlet {
 
@@ -26,7 +25,6 @@ public class RegistrationServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = hash(req.getParameter("pwd"));
 
-
         addToDataBase(firstname, lastname, email, password);
     }
 
@@ -37,6 +35,7 @@ public class RegistrationServlet extends HttpServlet {
             connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "pass");
         } catch (SQLException e) {
             System.out.println("Connection to data base failed");
+            e.printStackTrace();
         }
 
 

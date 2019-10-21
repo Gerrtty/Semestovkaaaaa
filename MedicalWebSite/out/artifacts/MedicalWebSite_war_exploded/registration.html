@@ -15,15 +15,15 @@
 <h2 style="text-align: center;"><span style="color: #00ccff;">Регистрация</span></h2>
 <div style="font-family:Comfortaa;font-size: 120%; margin: 20px 0px 0px 30px"><br/>
     <form action="registration" method="post">
-    Имя: <input type="text" name="firstname" /><br/><br/>
-    Фамилия: <input type="text" name="lastname" /><br/><br/>
+    Имя: <input type="text" name="firstname" required/><br/><br/>
+    Фамилия: <input type="text" name="lastname" required/><br/><br/>
     Пол:
         <input type="radio" name="sex" value="male"/>Мужской
         <input type="radio" name="sex" value="female"/>Женский<br/><br/>
     Номер телефона: <input type="number" name="number"/><br/><br/>
-        Логин(почта): <input type="text" name="email"/><br/><br/>
-        Пароль: <input type="password" name="pwd"><br/><br/>
-        Дата рождения: <input type="date" name="date"><br/><br/>
+        Логин(почта): <input type="email" name="email"required/><br/><br/>
+        Пароль: <input type="password" name="pwd"required><br/><br/>
+        Дата рождения: <input type="date" name="date"required><br/><br/>
     <!--<input type="checkbox" name="consent" value="consent"/>Я согласен на обработку персональных данных<br/><br/>-->
      <!--<input type="submit" value="Зарегестрироваться"/>-->
         <div class="formname">
