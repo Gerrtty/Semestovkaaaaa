@@ -54,14 +54,12 @@ public class RegistrationServlet extends HttpServlet {
 
         try {
 
-            byte[] data = s.getBytes("UTF-8");
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(data);
+            messageDigest.update(s.getBytes("UTF-8"));
             byte[] digest = messageDigest.digest();
 
-
             for (int i = 0; i < digest.length; i++) {
-                stringBuffer.append((char)digest[i]);
+                stringBuffer.append((char) digest[i]);
             }
 
 
@@ -70,7 +68,6 @@ public class RegistrationServlet extends HttpServlet {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-
 
         return stringBuffer.toString();
     }
