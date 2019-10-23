@@ -6,7 +6,7 @@ which includes list of medical examination and services that can be done at this
 Information about examination and services includes price and customer ratings and reviews. 
 Users can search for medical facilities where they can do certain analysis and examinations. 
 
-##Functional:
+## Functional:
 - there will be a page on the site listing all medical facilities
 - users will be able in the search bar to look for institutions where specific surveys can be done
 - users can leave comments and evaluations of the clinic and their services
