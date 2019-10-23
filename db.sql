@@ -1,12 +1,15 @@
 CREATE TABLE `User` (
-  `user_id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `sername` VARCHAR(45) NOT NULL,
-  `login` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `sername` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `sex` varchar(45) NOT NULL,
+  `phone` int(11) NOT NULL,
+  `birth_date` date NOT NULL,
   PRIMARY KEY (`user_id`),
-  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC));
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`)
+)
 
 CREATE TABLE `Building` (
   `building_id` INT NOT NULL AUTO_INCREMENT,

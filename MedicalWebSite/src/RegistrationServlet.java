@@ -4,9 +4,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 public class RegistrationServlet extends HttpServlet {
@@ -23,7 +20,7 @@ public class RegistrationServlet extends HttpServlet {
         String firstname = req.getParameter("firstname");
         String lastname = req.getParameter("lastname");
         String email = req.getParameter("email");
-        String password = hash(req.getParameter("pwd"));
+        String password = new Password(req.getParameter("pwd")).getPassword();
 
         addToDataBase(firstname, lastname, email, password);
     }
@@ -39,6 +36,8 @@ public class RegistrationServlet extends HttpServlet {
         }
 
 
+        String query = " insert into semestrovka.User (first_name, last_name, date_created, is_admin, num_points)"
+                + " values (?, ?, ?, ?, ?)";
 
         try {
             connection.close();
@@ -48,28 +47,5 @@ public class RegistrationServlet extends HttpServlet {
 
     }
 
-
-    private static String hash(String s) {
-        StringBuffer stringBuffer = new StringBuffer();
-
-        try {
-
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(s.getBytes("UTF-8"));
-            byte[] digest = messageDigest.digest();
-
-            for (int i = 0; i < digest.length; i++) {
-                stringBuffer.append((char) digest[i]);
-            }
-
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-        return stringBuffer.toString();
-    }
 
 }
