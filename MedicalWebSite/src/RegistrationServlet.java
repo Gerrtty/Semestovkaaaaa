@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
 
 public class RegistrationServlet extends HttpServlet {
 
@@ -20,31 +19,12 @@ public class RegistrationServlet extends HttpServlet {
         String firstname = req.getParameter("firstname");
         String lastname = req.getParameter("lastname");
         String email = req.getParameter("email");
-        String password = new Password(req.getParameter("pwd")).getPassword();
+        Password password = new Password(req.getParameter("pwd"));
+        boolean sex = true;
+        String phone = "";
+        java.util.Date birth = new java.util.Date();
 
-        addToDataBase(firstname, lastname, email, password);
-    }
-
-    private void addToDataBase(String firstname, String lastname, String email, String password) {
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "pass");
-        } catch (SQLException e) {
-            System.out.println("Connection to data base failed");
-            e.printStackTrace();
-        }
-
-
-        String query = " insert into semestrovka.User (first_name, last_name, date_created, is_admin, num_points)"
-                + " values (?, ?, ?, ?, ?)";
-
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+//        User user = new User(firstname, lastname, email, password, sex, phone, birth);
     }
 
 

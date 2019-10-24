@@ -1,7 +1,8 @@
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
-        Password p1 = new Password("hello");
-        Password p2 = new Password("hello2");
-        System.out.println(p1.equals(p2));
+        User user = new User("email", "Tom", "Cat" ,new Password("password"), true, 748739759);
+        user.addToDataBase();
     }
 }
