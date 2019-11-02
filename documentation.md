@@ -14,6 +14,9 @@ Users can search for medical facilities where they can do certain analysis and e
 - user can register on the site and log in to his personal account
 - without a personal account, leaving a review or chatting on the forum is not possible.
 
+## Data Base scheme
+![Alt text](https://github.com/Gerrtty/Semestovkaaaaa/blob/master/ERdiagram.png "ER diagram")
+
 #### Links:
 ##### Trello https://trello.com/b/mhw7snz4/medical-web-site
 
