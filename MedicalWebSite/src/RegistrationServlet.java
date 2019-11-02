@@ -11,7 +11,6 @@ public class RegistrationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher view = req.getRequestDispatcher("registration.html");
         view.forward(req, resp);
-
     }
 
     @Override
@@ -20,11 +19,8 @@ public class RegistrationServlet extends HttpServlet {
         String lastname = req.getParameter("lastname");
         String email = req.getParameter("email");
         Password password = new Password(req.getParameter("pwd"));
-        boolean sex = true;
-        String phone = "";
-        java.util.Date birth = new java.util.Date();
-
-//        User user = new User(firstname, lastname, email, password, sex, phone, birth);
+        User user = new User(firstname, lastname, email, password);
+        user.addToDataBase();
     }
 
 
