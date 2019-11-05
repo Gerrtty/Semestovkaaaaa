@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>clinic</title>
+</head>
+<body>
+<style>
+    .rating {
+        float:left;
+    }
+
+    /* Конструкция :not(:checked) работает как фильтр, чтобы браузеры, которые не поддерживают псевдокласс :checked не применяли эти свойства. Все браузеры, поддерживающие псевдокласс :checked, поддерживают и псевдокласс :not(), так что фильтр должен отработать правильно. */
+    .rating:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+        clip:rect(0,0,0,0);
+    }
+
+    .rating:not(:checked) > label {
+        float:right;
+        width:1em;
+        padding:0 .1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:200%;
+        line-height:1.2;
+        color:#ddd;
+        text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+    }
+
+    .rating:not(:checked) > label:before {
+        content: '★ ';
+    }
+
+    .rating > input:checked ~ label {
+        color: #f70;
+        text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+    }
+
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label {
+        color: gold;
+        text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    }
+
+    .rating > input:checked + label:hover,
+    .rating > input:checked + label:hover ~ label,
+    .rating > input:checked ~ label:hover,
+    .rating > input:checked ~ label:hover ~ label,
+    .rating > label:hover ~ input:checked ~ label {
+        color: #ea0;
+        text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    }
+    .rating > label:active {
+        position:relative;
+        top:2px;
+        left:2px;
+    }
+</style>
+<script type="text/javascript">
+    window.onload = function(){
+        document.getElementById('add').onclick = startKomm;
+    }
+       function startKomm(){
+        var text = document.getElementById('txt').value;
+        var komm = document.createElement('p');
+        var newText = document.createTextNode(text);
+        komm.appendChild(newText);
+        document.getElementById('komments').appendChild(komm);
+        return true;
+       }
+</script>
+<style>body{
+    background: url("photo/background.png"); background-size: 100% 220%;
+}</style>
+<p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG" , alt = "wait"></p>
+<h4 style="text-align: right;">Личный кабинет:</h4>
+<p style="text-align: right;"><strong><a href="" class="button7">Зарегестрироваться</style></a></strong> / <strong><a href="" class="button7">Вход</a></strong></p><br/>
+<table>
+    <tr>
+        <td><h1><strong>Будь здоров</strong></h1>
+            <p>Медцентр ул.Нариманова,65</p>
+<img width="500" height="300" src="photo/clinic/be%20healfy.jpg">
+<p>
+<fieldset class="rating">
+    <legend>Пожалуйста, оцените клинику:</legend>
+    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Wonderful!">5 stars</label>
+    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Very bad!">1 star</label>
+</fieldset>
+</p>
+        </td>
+        <td>
+            <h3>Медецинский массаж</h3>
+            <h3>Консультация врача</h3>
+            <h3>Вакцинация против гриппа</h3>
+        </td>
+        <td>
+            <h3>500 руб.</h3>
+            <h3>600 руб.</h3>
+            <h3>700 руб.</h3>
+        </td>
+    </tr>
+</table>
+<form>
+    <label>Оставьте отзыв:</label><br />
+    <textarea rows="5" cols="50" id="txt"></textarea><br />
+    <input type="button" value="Добавить отзыв" id="add" />
+</form>
+<div id="comments"></div>
+<div style="border: 2px solid black; text-align: left; background-color: white; width: 500px; height: 100px; padding: 10px;">
+    <table>
+    <div>
+        <td style="width: 200px">
+        <div class="user_name">
+        <h3 style="color: blue">${Юля}</h3>
+        </div>
+<div class="date">
+    <h4>${15.06.2000 15:30 }</h4>
+        </td>
+    </div>
+<td>
+    <div class="text_comment">
+        <p>${Классно, отличное обслуживание!Так понравилось, что прям захотелось еще раз прийти}</p>
+        <p>Оценка: 5</p>
+    </div>
+</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
