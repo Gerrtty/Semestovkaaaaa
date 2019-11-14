@@ -72,9 +72,27 @@
         return true;
        }
 </script>
+<style>
+    a.button7 {
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+        padding: .8em 1em calc(.8em + 3px);
+        border-radius: 3px;
+        background: rgb(64,199,129);
+        box-shadow: 0 -3px rgb(53,167,110) inset;
+        transition: 0.2s;
+    }
+    a.button7:hover { background: rgb(53, 167, 110); }
+    a.button7:active {
+        background: rgb(33,147,90);
+        box-shadow: 0 3px rgb(33,147,90) inset;
+    }
+</style>
 <style>body{
     background: url("photo/background.png"); background-size: 100% 220%;
 }</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap..">
 <p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG" , alt = "wait"></p>
 <h4 style="text-align: right;">Личный кабинет:</h4>
 <p style="text-align: right;"><strong><a href="" class="button7">Зарегестрироваться</style></a></strong> / <strong><a href="" class="button7">Вход</a></strong></p><br/>
@@ -111,26 +129,44 @@
     <textarea rows="5" cols="50" id="txt"></textarea><br />
     <input type="button" value="Добавить отзыв" id="add" />
 </form>
-<div id="comments"></div>
-<div style="border: 2px solid black; text-align: left; background-color: white; width: 500px; height: 100px; padding: 10px;">
-    <table>
+<!--<div id="comments"></div>-->
+<!--<div style="border: 2px solid black; text-align: left; background-color: white; width: 500px; height: 100px; padding: 10px;">-->
+    <!--<table>-->
+    <!--<div>-->
+        <!--<td style="width: 200px">-->
+        <!--<div class="user_name">-->
+        <!--<h3 style="color: blue">${Юля}</h3>-->
+        <!--</div>-->
+<!--<div class="date">-->
+    <!--<h4>${15.06.2000 15:30 }</h4>-->
+        <!--</td>-->
+    <!--</div>-->
+<!--<td>-->
+    <!--<div class="text_comment">-->
+        <!--<p>${Классно, отличное обслуживание!Так понравилось, что прям захотелось еще раз прийти}</p>-->
+        <!--<p>Оценка: 5</p>-->
+    <!--</div>-->
+<!--</td>-->
+    <!--</tr>-->
+<!--</table>-->
+<fieldset class="rating" style="background-color: white">
+    <legend><h2>Юля</h2></legend>
+    <table style="width: 800px" height="30px">
     <div>
-        <td style="width: 200px">
-        <div class="user_name">
-        <h3 style="color: blue">${Юля}</h3>
-        </div>
-<div class="date">
+    <td style="width: 200px">
+    <div class="date">
     <h4>${15.06.2000 15:30 }</h4>
-        </td>
+    </td>
     </div>
-<td>
+    <td >
     <div class="text_comment">
-        <p>${Классно, отличное обслуживание!Так понравилось, что прям захотелось еще раз прийти}</p>
-        <p>Оценка: 5</p>
+    <p>${Классно, отличное обслуживание!Так понравилось, что прям захотелось еще раз прийти}</p>
+    <p>Оценка: 5</p>
     </div>
-</td>
+    </td>
     </tr>
-</table>
+    </table>
+</fieldset>
 </div>
 </body>
 </html>
