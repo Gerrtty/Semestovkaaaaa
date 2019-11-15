@@ -16,6 +16,10 @@
 <h2 style="text-align: center;"><span style="color: #00ccff;">РЕГИСТРАЦИЯ</span></h2>
 <div style="font-family:Comfortaa;font-size: 120%; margin: 20px 0px 0px 30px"><br/>
     <form action="registration" method="post">
+        <img wight="150" height="150" src="photo/userPhoto.png">
+        <form enctype="multipart/form-data" method="post">
+            <p style="font-size: small">Загрузите вашу фотографию</p>
+            <p style=""><input type="file" name="photo" multiple accept="image/*,image/jpeg"><br/><br/>
         Имя: <input type="text" name="firstname" required/><br/><br/>
         Фамилия: <input type="text" name="lastname" required/><br/><br/>
         <style>
@@ -34,7 +38,7 @@
         Пол:
         <input type="radio" name="sex" value="male"/>Мужской
         <input type="radio" name="sex" value="female"/>Женский<br/><br/>
-        Логин(почта): <input type="email" name="email"required/><br/><br/>
+        Логин(почта): <input type="email" name="email"required/><br/>
         <div class="block_for_input">
             Пароль: <input type="password" id="input_test" name="pass" required onkeyup='passcorr()'/>
             <script>
