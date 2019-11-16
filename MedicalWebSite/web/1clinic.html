@@ -98,8 +98,8 @@
 <p style="text-align: right;"><strong><a href="" class="button7">Зарегестрироваться</style></a></strong> / <strong><a href="" class="button7">Вход</a></strong></p><br/>
 <table>
     <tr>
-        <td><h1><strong>Будь здоров</strong></h1>
-            <p>Медцентр ул.Нариманова,65</p>
+        <td><h1 id="name_of_clinic"><strong>${name_of_clinic}</strong></h1>
+            <p id="address">${address}</p>
 <img width="500" height="300" src="photo/clinic/be%20healfy.jpg">
 <p>
 <fieldset class="rating">
@@ -113,14 +113,14 @@
 </p>
         </td>
         <td>
-            <h3>Медецинский массаж</h3>
-            <h3>Консультация врача</h3>
-            <h3>Вакцинация против гриппа</h3>
+            <h3 id="name_of_service_1">${service}</h3>
+            <h3 id="name_of_service_2">${service}</h3>
+            <h3 id="name_of_service_3">${service}</h3>
         </td>
         <td>
-            <h3>500 руб.</h3>
-            <h3>600 руб.</h3>
-            <h3>700 руб.</h3>
+            <h3 id="price1">${price}</h3>
+            <h3 id="price2">${price}</h3>
+            <h3 id="price3">${price}</h3>
         </td>
     </tr>
 </table>
@@ -150,19 +150,19 @@
     <!--</tr>-->
 <!--</table>-->
 <fieldset class="rating" style="background-color: white">
-    <legend><h2>Юля</h2></legend>
+    <legend><h2 id="name">${name}</h2></legend>
     <table style="width: 800px" height="30px">
     <div>
     <td style="width: 200px">
     <div class="date">
         <img wight="80" height="80" src="photo/userPhoto.png">
-    <h4>${15.06.2000 15:30 }</h4>
+    <h4 id="date">${date }</h4>
     </td>
     </div>
     <td >
     <div class="text_comment">
-    <p>${Классно, отличное обслуживание!Так понравилось, что прям захотелось еще раз прийти}</p>
-    <p>Оценка: 5</p>
+    <p id="text_comment">${text_comment}</p>
+    <p id="score">Оценка: ${score}</p>
     </div>
     </td>
     </tr>
