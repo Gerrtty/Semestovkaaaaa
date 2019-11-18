@@ -5,11 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionToDataBase {
-    private static Logger logger = Logger.getLogger();
 
-    private static String url = "jdbc:mysql://127.0.0.1:3306/?user=root";
-    private static String user = "root";
-    private static String password = "pass";
+    private static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
+    private static String USER = "root";
+    private static String PASSWORD = "pass";
     private static Connection connection;
 
     private ConnectionToDataBase() {
@@ -25,10 +24,10 @@ public class ConnectionToDataBase {
 
     private static void createConnection() {
         try {
-            connection = DriverManager.getConnection(url, user, password);
-            logger.green_write("Connect to data base");
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            Logger.green_write("Connect to data base");
         } catch (SQLException e) {
-            logger.red_wrie("Connection to data base failed");
+            Logger.red_write("Connection to data base failed");
         }
     }
 
@@ -37,7 +36,7 @@ public class ConnectionToDataBase {
             connection.close();
         }
         catch (SQLException e) {
-            logger.red_wrie("Closing connection is failed");
+            Logger.red_write("Closing connection is failed");
             e.printStackTrace();
         }
     }

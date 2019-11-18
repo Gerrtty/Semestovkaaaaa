@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="MedicalWebSite:war exploded">
+  <artifact type="exploded-war" build-on-make="true" name="MedicalWebSite:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/MedicalWebSite_war_exploded</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="MedicalWebSite/web/Web" />
@@ -7,7 +7,18 @@
         <element id="directory" name="classes">
           <element id="module-output" name="MedicalWebSite" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-5.1.17-bin" />
+          <element id="library" level="project" name="freemarker" />
+        </element>
       </element>
+      <element id="library" level="project" name="freemarker" />
+      <element id="library" level="project" name="mysql-connector-java-5.1.17-bin" />
+      <element id="library" level="project" name="javax.servlet-api-3.0.1" />
+      <element id="library" level="application" name="bootstrap" />
+      <element id="library" level="application" name="jquery-3.3.1.slim" />
+      <element id="library" level="application" name="jquery-latest" />
+      <element id="library" level="application" name="popper" />
     </root>
   </artifact>
 </component>

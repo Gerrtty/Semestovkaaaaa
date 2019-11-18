@@ -1,6 +1,7 @@
 package ORM;
 
-import some_usefull_classes.Password;
+import some_usefull_classes.Email;
+import some_usefull_classes.Phone;
 
 import java.io.Serializable;
 import java.sql.Blob;
@@ -11,16 +12,22 @@ public class User implements Serializable {
     private int id;
     private String firstName;
     private String lastName;
-    private String email;
-    private Password password;
+    private Email email;
+    private String password;
     private String gender;
     private Date birthDate;
     private String about_user;
     private Blob photo;
+    private Phone phone;
 
-    public User(String firstName, String lastName, String email, Password password) {
+    public User(String firstName, String lastName, Email email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(Email email, String password) {
         this.email = email;
         this.password = password;
     }
@@ -29,7 +36,21 @@ public class User implements Serializable {
 
     }
 
-    public void User(String firstName, String lastName, String email, Password password) {
+    public User(String firstName, String lastName, Email email, String password, String gender,
+                Date birthDate, String about_user, Blob photo, Phone phone) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.about_user = about_user;
+        this.photo = photo;
+        this.phone = phone;
+    }
+
+    public void User(String firstName, String lastName, Email email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -48,11 +69,11 @@ public class User implements Serializable {
         return lastName;
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 
-    public Password getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -64,7 +85,7 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Email email) {
         this.email = email;
     }
 
@@ -72,7 +93,7 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public void setPassword(Password password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

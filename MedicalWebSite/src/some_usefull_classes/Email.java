@@ -19,4 +19,12 @@ public class Email {
     public static boolean isCorrect(String email) {
         return pattern.matcher(email).matches();
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

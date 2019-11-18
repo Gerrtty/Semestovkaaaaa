@@ -25,7 +25,7 @@ public class Password {
             byte[] digest = messageDigest.digest();
 
             for (int i = 0; i < digest.length; i++) {
-                stringBuffer.append((char) digest[i]);
+                stringBuffer.append(digest[i]);
             }
 
 
@@ -40,5 +40,9 @@ public class Password {
 
     public boolean equals(Password password) {
         return this.password.equals(password.getPassword());
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

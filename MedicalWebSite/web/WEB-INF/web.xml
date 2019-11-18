@@ -5,23 +5,13 @@
          version="4.0">
     
     <servlet>
-        <servlet-name>refistration</servlet-name>
+        <servlet-name>registration</servlet-name>
         <servlet-class>servlets.RegistrationServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>refistration</servlet-name>
+        <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>ok</servlet-name>
-        <servlet-class>OkServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>ok</servlet-name>
-        <url-pattern>/ok</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -35,12 +25,13 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>servlets.TestServlet</servlet-class>
+        <servlet-name>authorization</servlet-name>
+        <servlet-class>servlets.AuthorizationServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>test</servlet-name>
-        <url-pattern>/test</url-pattern>
+        <servlet-name>authorization</servlet-name>
+        <url-pattern>/authorization</url-pattern>
     </servlet-mapping>
+
 </web-app>

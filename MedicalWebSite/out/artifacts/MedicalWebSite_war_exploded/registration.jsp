@@ -13,6 +13,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Med.Care.Registration</title>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<%--    <script>--%>
+
+<%--        $.get("registration", function(responseText) {--%>
+<%--            $("#correct_email").text("Random number = 34");--%>
+<%--        });--%>
+
+
+<%--    </script>--%>
+
 </head>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -45,8 +57,8 @@
         <img wight="150" height="150" src="photo/userPhoto.png">
 
 
-                Имя: <input type="text" name="firstname" id="firstname" required/><br/><br/>
-                Фамилия: <input type="text" name="lastname" id="lastname" required/><br/><br/>
+                Имя: <input type="text" name="firstName" id="firstName" required/><br/><br/>
+                Фамилия: <input type="text" name="lastName" id="lastName" required/><br/><br/>
 
                 <style>
                     .block_for_input {
@@ -65,7 +77,9 @@
                 Пол:
                 <input type="radio" name="sex" value="male"/>Мужской
                 <input type="radio" name="sex" value="female"/>Женский<br/><br/>
-                Логин(почта): <input type="email" name="email" required/><br/>
+
+                Логин(почта): <input type="text" name="email" required/><br/>
+                <div id="correct_email"></div>
 
             <div class="block_for_input">
 
