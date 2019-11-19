@@ -34,8 +34,8 @@
         </div>
 
         <div class="content">
-            <input name="username" type="text" class="input username" value="Логин" onfocus="this.value=''" />
-            <input name="password" type="password" class="input password" value="Пароль" onfocus="this.value=''" />
+            <input name="username" type="text" class="input username" value="Логин" onfocus="this.value=''" required />
+            <input name="password" type="password" class="input password" value="Пароль" onfocus="this.value=''" required/>
         </div>
 
         <div class="footer">

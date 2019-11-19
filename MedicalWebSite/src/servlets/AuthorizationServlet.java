@@ -2,20 +2,19 @@ package servlets;
 
 import DAO.UserDAO;
 import ORM.User;
-import some_usefull_classes.ConnectionToDataBase;
 import some_usefull_classes.Email;
 import some_usefull_classes.Logger;
 import some_usefull_classes.Password;
+import utills.AppUtils;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 
 public class AuthorizationServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,14 +26,15 @@ public class AuthorizationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("username");
         String password = req.getParameter("password");
-        Logger.green_write(login);
-        Logger.green_write(password);
 
         User user = new UserDAO().getUserByLogin(new Email(login));
 
-
         if(user == null) {
             Logger.red_write("User is not exists");
+            req.setAttribute("errorMessage", "Error");
+
+            this.getServletContext().getRequestDispatcher("authorization.jsp").forward(req, resp);
+            return;
         }
 
         else {
@@ -42,10 +42,31 @@ public class AuthorizationServlet extends HttpServlet {
 
             if(user.getPassword().equals(new Password(password).getPassword())) {
                 Logger.green_write("Right password!");
-                resp.sendRedirect("profile");
+                AppUtils.storeLoginedUser(req.getSession(), user);
+
+                int redirectId = -1;
+
+                try {
+                    redirectId = Integer.parseInt(req.getParameter("redirectId"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                String requestUri = AppUtils.getRedirectAfterLoginUrl(req.getSession(), redirectId);
+
+                if (requestUri != null) {
+                    resp.sendRedirect(requestUri);
+                } else {
+                    // По умолчанию после успешного входа в систему
+                    // перенаправить на страницу /userInfo
+                    resp.sendRedirect(req.getContextPath() + "/profile");
+                }
+
             }
+
             else {
                 Logger.red_write("Wrong password!");
+                resp.sendRedirect("/authorization");
             }
         }
     }

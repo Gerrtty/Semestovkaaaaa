@@ -41,11 +41,11 @@ public class UserDAO implements DAO<User> {
             preparedStatement.setString(2, user.getLastName());
             preparedStatement.setString(3, user.getEmail().getEmail());
             preparedStatement.setString(4, user.getPassword());
-            preparedStatement.setString(5, user.getPhone().getPhone());
+            preparedStatement.setString(5, user.getPhone());
             preparedStatement.setString(6, user.getAbout_user());
             preparedStatement.setBlob(7, user.getPhoto());
             preparedStatement.setString(8, user.getGender());
-            preparedStatement.setString(9, user.getRole());
+            preparedStatement.setString(9, user.getRoles().get(0));
 
             preparedStatement.executeUpdate();
 
@@ -98,7 +98,7 @@ public class UserDAO implements DAO<User> {
                                     new Email(rs.getString("email")),
                                     rs.getString("password"),
                                     rs.getString("gender"),
-                                    rs.getString("about_user"),
+                                    rs.getString("aboute_user"),
                                     inputStream,
                                     new Phone(rs.getString("phone")),
                                     rs.getString("role"));

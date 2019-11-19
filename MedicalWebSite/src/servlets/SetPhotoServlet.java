@@ -20,8 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 @WebServlet("/uploadServlet")
-@MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
-public class SetPhoto extends HttpServlet {
+@MultipartConfig(maxFileSize = 16177215)
+
+public class SetPhotoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

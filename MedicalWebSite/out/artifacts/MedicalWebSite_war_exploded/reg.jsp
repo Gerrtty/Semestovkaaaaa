@@ -104,7 +104,7 @@
 
     </div>
     Повторите пароль: <input type = "password" id="2pass" name="confirm_pass" required></br></br>
-    Номер телефона: <input type = "text" id="phone" name="phone"></br></br>
+    Номер телефона: <input type = "text" id="phone" name="phone" required></br></br>
 
     <script>
         var s_letters = "qwertyuiopasdfghjklzxcvbnm"; // Буквы в нижнем регистре

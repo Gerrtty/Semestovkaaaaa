@@ -5,8 +5,10 @@ import some_usefull_classes.Phone;
 
 import java.io.InputStream;
 import java.io.Serializable;
-import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
     
@@ -20,7 +22,15 @@ public class User implements Serializable {
     private String about_user;
     private InputStream photo;
     private Phone phone;
-    private String role;
+    private List<String> roles;
+
+    private void initRoles(String... roles) {
+
+        this.roles = new ArrayList<String>();
+        if (roles != null) {
+            this.roles.addAll(Arrays.asList(roles));
+        }
+    }
 
     public User(String firstName, String lastName, Email email, String password) {
         this.firstName = firstName;
@@ -39,7 +49,7 @@ public class User implements Serializable {
     }
 
     public User(String firstName, String lastName, Email email, String password, String gender,
-             String about_user, InputStream photo, Phone phone, String role) {
+             String about_user, InputStream photo, Phone phone, String... roles) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,7 +59,7 @@ public class User implements Serializable {
         this.about_user = about_user;
         this.photo = photo;
         this.phone = phone;
-        this.role = role;
+        initRoles(roles);
     }
 
     public void User(String firstName, String lastName, Email email, String password) {
@@ -135,19 +145,19 @@ public class User implements Serializable {
         this.photo = photo;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public String getPhone() {
+        return phone.getPhone();
     }
 
     public void setPhone(Phone phone) {
         this.phone = phone;
     }
 
-    public String getRole() {
-        return role;
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public List<String> getRoles() {
+        return roles;
     }
 }
