@@ -19,8 +19,7 @@ public class AuthorizationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher view = req.getRequestDispatcher("authorization.jsp");
-        view.forward(req, resp);
+        req.getRequestDispatcher("authorization.jsp").forward(req, resp);
         Logger.green_write("Get method from Authorization Servlet is called");
     }
 
@@ -43,6 +42,7 @@ public class AuthorizationServlet extends HttpServlet {
 
             if(user.getPassword().equals(new Password(password).getPassword())) {
                 Logger.green_write("Right password!");
+                resp.sendRedirect("profile");
             }
             else {
                 Logger.red_write("Wrong password!");

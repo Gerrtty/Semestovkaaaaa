@@ -3,10 +3,8 @@ package DAO;
 import ORM.User;
 import some_usefull_classes.*;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.InputStream;
+import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,8 +12,9 @@ public class UserDAO implements DAO<User> {
 
     private User user;
 
-    private static String sql = "INSERT INTO semestrovka.User (firstName, lastName, gender, email, password)" +
-            "VALUES (?, ?, ?, ?, ?)";
+    private static String sql = "INSERT INTO semestrovka.User (firstName, lastName, email, password," +
+            "phone, aboute_user, photo, gender, role)" +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static String userIsExists = "SELECT login FROM semestrovka.User";
 
@@ -40,14 +39,19 @@ public class UserDAO implements DAO<User> {
             PreparedStatement preparedStatement = ConnectionToDataBase.getConnection().prepareStatement(sql);
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
-            preparedStatement.setString(3, user.getGender());
-            preparedStatement.setString(4, user.getEmail().getEmail());
-            preparedStatement.setString(5, user.getPassword());
+            preparedStatement.setString(3, user.getEmail().getEmail());
+            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(5, user.getPhone().getPhone());
+            preparedStatement.setString(6, user.getAbout_user());
+            preparedStatement.setBlob(7, user.getPhoto());
+            preparedStatement.setString(8, user.getGender());
+            preparedStatement.setString(9, user.getRole());
+
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("adding to data base failed");
+//            System.out.println("adding to data base failed");
         }
 
     }
@@ -82,11 +86,22 @@ public class UserDAO implements DAO<User> {
                 if(login.equals(email.getEmail())) {
                     Logger.green_write("User is exists");
 
-                    return new User(rs.getString("firstName"), rs.getString("lastName"),
-                            new Email(rs.getString("email")), rs.getString("password"),
-                            rs.getString("gender"), rs.getDate("birth_date"),
-                            rs.getString("about_user"),
-                            rs.getBlob("photo"), new Phone(rs.getString("phone")));
+                    InputStream inputStream = null;
+
+                    Blob blob = rs.getBlob("photo");
+                    if(blob != null) {
+                        inputStream = blob.getBinaryStream();
+                    }
+
+                    return new User(rs.getString("firstName"),
+                                    rs.getString("lastName"),
+                                    new Email(rs.getString("email")),
+                                    rs.getString("password"),
+                                    rs.getString("gender"),
+                                    rs.getString("about_user"),
+                                    inputStream,
+                                    new Phone(rs.getString("phone")),
+                                    rs.getString("role"));
                 }
             }
 

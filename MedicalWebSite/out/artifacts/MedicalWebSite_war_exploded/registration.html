@@ -1,29 +1,26 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yuliya
-  Date: 17.11.19
-  Time: 21:38
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Med.Care.Registration</title>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-<%--    <script>--%>
+    <script>
 
-<%--        $.get("registration", function(responseText) {--%>
-<%--            $("#correct_email").text(responseText);--%>
-<%--        });--%>
+        $(document).on("click", "#submit", function() {
+            $.get("registration", function(responseText) {
+                $("#block_check").text(responseText);
+            });
+        });
 
-
-<%--    </script>--%>
+    </script>
 
 </head>
 
@@ -33,26 +30,26 @@
 
 <body>
 
+
 <style>body{
     background: url("photo/background.png");
     background-size: 100% 220%;
 }</style>
 
-<p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG", alt = "wait"></p>
+<p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG" alt = "wait"></p>
 
 <h2 style="text-align: center;"><span style="color: #00ccff;">РЕГИСТРАЦИЯ</span></h2>
 
-<div style="font-family:Comfortaa;font-size: 120%; margin: 20px 0px 0px 30px"><br/>
+<div style="font-family:Comfortaa;font-size: 120%; margin: 20px 0px 0px 30px"><br/> </div>
 
-    <form enctype="multipart/form-data" method="post" action="setPhoto">
+    <form method="post" action="registration" enctype="multipart/form-data">
 
         <p style="font-size: small">Загрузите вашу фотографию</p>
-        <p style=""><input type="file" name="photo" multiple accept="image/*,image/jpeg"><br/><br/>
+
+        <p style="">
+            <input type="file" name="photo" multiple accept="image/*,image/jpeg"><br/><br/>
         </p>
 
-    </form>
-
-    <form action="registration" method="post">
 
         <img wight="150" height="150" src="photo/userPhoto.png">
 
@@ -78,7 +75,7 @@
                 <input type="radio" name="sex" value="male"/>Мужской
                 <input type="radio" name="sex" value="female"/>Женский<br/><br/>
 
-                Логин(почта): <input type="text" name="email" required/><br/>
+                Логин(почта): <input type="text" name="email" id="email" required/><br/>
                 <div id="correct_email"></div>
 
             <div class="block_for_input">
@@ -112,10 +109,11 @@
                         document.getElementById("err").innerHTML=err;
                     }
                 </script>
-                <div id="block_check"></div>
+                <div id="block_check" name="block_check"></div>
             </div>
 
             Повторите пароль: <input type = "password" id="2pass" name="confirm_pass" required></br></br>
+            Номер телефона: <input type = "text" id="phone" name="phone"></br></br>
 
             <script>
                 var s_letters = "qwertyuiopasdfghjklzxcvbnm"; // Буквы в нижнем регистре
@@ -183,13 +181,15 @@
 
             </script>
 
+        <div id="auth-info"></div>
+
         <div class="formname">
 
             <input id="checkbox" type="checkbox" name="checkbox" onchange="document.getElementById('submit').disabled = !this.checked;" />
 
             <label for="checkbox">Настоящим подтверждаю, что я согласен на обработку персональных данных</label><br/>
 
-            <input type="submit" disabled="disabled" name="submit" id="submit" value="Зарегестрироваться" />
+            <input type="submit" disabled="disabled" name="submit" id="submit">Зарегестрироваться</input>
 
         </div>
 

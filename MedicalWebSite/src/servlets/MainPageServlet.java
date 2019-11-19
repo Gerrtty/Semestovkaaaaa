@@ -1,6 +1,7 @@
 package servlets;
 
-import javax.servlet.RequestDispatcher;
+import some_usefull_classes.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +11,12 @@ import java.io.IOException;
 public class MainPageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        Logger.green_write("Post method from MainPageServlet servlet is called");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("main_page.jsp");
-        requestDispatcher.forward(req, resp);
+        Logger.green_write("Get method from MainPageServlet servlet is called");
+        req.getRequestDispatcher("main_page.jsp").forward(req, resp);
     }
 }

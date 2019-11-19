@@ -11,6 +11,8 @@
           <element id="library" level="project" name="mysql-connector-java-5.1.17-bin" />
           <element id="library" level="project" name="freemarker" />
           <element id="library" level="project" name="commons-fileupload-1.3" />
+          <element id="library" level="project" name="json-20190722" />
+          <element id="library" level="project" name="org.apache.commons.io" />
         </element>
       </element>
     </root>

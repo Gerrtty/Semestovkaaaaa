@@ -1,107 +1,151 @@
 package servlets;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import DAO.UserDAO;
+import ORM.User;
+import some_usefull_classes.Email;
+import some_usefull_classes.Logger;
+import some_usefull_classes.Password;
+import some_usefull_classes.Phone;
 
-import javax.servlet.RequestDispatcher;
+import java.io.IOException;
+import java.io.InputStream;
+
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import some_usefull_classes.Logger;
-
+@WebServlet("/uploadServlet")
+@MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
 public class SetPhoto extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher view = req.getRequestDispatcher("uploadPhoto.jsp");
-        view.forward(req, resp);
-        Logger.green_write("Get method from SetPhoto Servlet is called");
+
     }
 
-    private Random random = new Random();
+    protected void doPost(HttpServletRequest req,
+                          HttpServletResponse resp) throws ServletException, IOException {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //проверяем является ли полученный запрос multipart/form-data
-        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-        if (!isMultipart) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-            return;
+        Logger.green_write("Post method from Upload Servlet");
+
+        String login = req.getParameter("email");
+        String password = req.getParameter("pass");
+        String phone = req.getParameter("phone");
+
+        Email email = new Email(login);
+        Phone user_phone = new Phone(phone);
+
+        InputStream inputStream = getInputStream(req);
+
+
+        if(correctParams(password, req.getParameter("confirm_pass"), email, user_phone)) {
+
+            UserDAO userDAO = new UserDAO();
+
+            if(userDAO.getUserByLogin(email) != null) {
+                Logger.red_write("This user is already exists!");
+                resp.getWriter().write("User is already exists");
+            }
+
+            else {
+                System.out.println("Creating");
+                createUser(userDAO,
+                           req.getParameter("firstName"),
+                           req.getParameter("lastName"),
+                           email,
+                           new Password(password),
+                           req.getParameter("sex"),
+                           user_phone,
+                           inputStream);
+
+                Logger.green_write("User is created");
+                resp.getWriter().write("");
+                resp.sendRedirect("profile");
+            }
+
         }
 
-        // Создаём класс фабрику
-        DiskFileItemFactory factory = new DiskFileItemFactory();
+        else {
+            resp.getWriter().write("Incorrect email or phone or passwords not matching");
+        }
 
-        // Максимальный буфера данных в байтах,
-        // при его привышении данные начнут записываться на диск во временную директорию
-        // устанавливаем один мегабайт
-        factory.setSizeThreshold(1024*1024);
+    }
 
-        // устанавливаем временную директорию
-        File tempDir = (File)getServletContext().getAttribute("javax.servlet.context.tempdir");
-        factory.setRepository(tempDir);
+    private InputStream getInputStream(HttpServletRequest request) {
 
-        //Создаём сам загрузчик
-        ServletFileUpload upload = new ServletFileUpload(factory);
+        InputStream inputStream = null;
 
-        //максимальный размер данных который разрешено загружать в байтах
-        //по умолчанию -1, без ограничений. Устанавливаем 10 мегабайт.
-        upload.setSizeMax(1024 * 1024 * 10);
+        // obtains the upload file part in this multipart request
+        Part filePart = null;
 
         try {
-            List items = upload.parseRequest(request);
-            Iterator iter = items.iterator();
+            filePart = request.getPart("photo");
 
-            while (iter.hasNext()) {
-                FileItem item = (FileItem) iter.next();
-
-                if (item.isFormField()) {
-                    //если принимаемая часть данных является полем формы
-                    processFormField(item);
-                } else {
-                    //в противном случае рассматриваем как файл
-                    processUploadedFile(item);
-                }
+            if(filePart != null) {
+                inputStream = filePart.getInputStream();
+                System.out.println(filePart.getName());
+                System.out.println(filePart.getSize());
+                System.out.println(filePart.getContentType());
             }
-        } catch (Exception e) {
+
+        } catch (IOException | ServletException e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            return;
         }
+
+        return inputStream;
     }
 
-    /**
-     * Сохраняет файл на сервере, в папке upload.
-     * Сама папка должна быть уже создана.
-     *
-     * @param item
-     * @throws Exception
-     */
-    private void processUploadedFile(FileItem item) throws Exception {
-        File uploadetFile = null;
-        //выбираем файлу имя пока не найдём свободное
-        do{
-            String path = getServletContext().getRealPath("/upload/"+random.nextInt() + item.getName());
-            uploadetFile = new File(path);
-        }while(uploadetFile.exists());
+    private void createUser(UserDAO userDAO,
+                            String firstName,
+                            String lastName,
+                            Email email,
+                            Password password,
+                            String gender,
+                            Phone phone,
+                            InputStream inputStream) {
 
-        //создаём файл
-        uploadetFile.createNewFile();
-        //записываем в него данные
-        item.write(uploadetFile);
+        User user = new User(firstName, lastName, email, password.getPassword());
+
+        // This fields is not mandatory, can be null
+        user.setGender(gender);
+        user.setPhone(phone);
+        user.setPhoto(inputStream);
+        System.out.println(gender);
+        System.out.println(phone);
+        System.out.println(inputStream);
+
+        userDAO.add(user);
+
+        Logger.green_write("User is created");
     }
 
-    /**
-     * Выводит на консоль имя параметра и значение
-     * @param item
-     */
-    private void processFormField(FileItem item) {
-        System.out.println(item.getFieldName()+"="+item.getString());
+    private boolean correctParams(String password,
+                                  String confirm_password,
+                                  Email email,
+                                  Phone phone) {
+
+        if(!password.equals(confirm_password) || !email.isCorrect() || !phone.isCorrect()) {
+            if(!password.equals(confirm_password)) {
+                Logger.red_write("Passwords not matching");
+            }
+
+            if(!email.isCorrect()) {
+                Logger.red_write("Email is not correct!");
+            }
+
+            if(!phone.isCorrect()) {
+                Logger.red_write("Phone is not correct!");
+            }
+
+            return false;
+        }
+
+        return true;
     }
+
 }

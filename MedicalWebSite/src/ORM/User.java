@@ -3,6 +3,7 @@ package ORM;
 import some_usefull_classes.Email;
 import some_usefull_classes.Phone;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.util.Date;
@@ -17,8 +18,9 @@ public class User implements Serializable {
     private String gender;
     private Date birthDate;
     private String about_user;
-    private Blob photo;
+    private InputStream photo;
     private Phone phone;
+    private String role;
 
     public User(String firstName, String lastName, Email email, String password) {
         this.firstName = firstName;
@@ -37,17 +39,17 @@ public class User implements Serializable {
     }
 
     public User(String firstName, String lastName, Email email, String password, String gender,
-                Date birthDate, String about_user, Blob photo, Phone phone) {
+             String about_user, InputStream photo, Phone phone, String role) {
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.gender = gender;
-        this.birthDate = birthDate;
         this.about_user = about_user;
         this.photo = photo;
         this.phone = phone;
+        this.role = role;
     }
 
     public void User(String firstName, String lastName, Email email, String password) {
@@ -125,12 +127,27 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public Blob getPhoto() {
+    public InputStream getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Blob photo) {
+    public void setPhoto(InputStream photo) {
         this.photo = photo;
     }
 
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

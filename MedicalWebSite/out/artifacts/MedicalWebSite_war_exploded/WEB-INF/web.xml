@@ -48,4 +48,41 @@
         <servlet-name>photo</servlet-name>
         <url-pattern>/setPhoto</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>forum</servlet-name>
+        <servlet-class>servlets.ForumServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>forum</servlet-name>
+        <url-pattern>/forum</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>list_of_clinics</servlet-name>
+        <servlet-class>servlets.ListOfClinicsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>list_of_clinics</servlet-name>
+        <url-pattern>/listOfClinics</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>freeMarker</servlet-name>
+        <servlet-class>servlets.TestFreeMarker</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>freeMarker</servlet-name>
+        <url-pattern>/f</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>user_profile</servlet-name>
+        <servlet-class>servlets.UserProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user_profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
 </web-app>
