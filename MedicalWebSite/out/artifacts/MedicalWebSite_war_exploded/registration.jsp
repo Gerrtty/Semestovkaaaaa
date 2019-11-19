@@ -19,7 +19,7 @@
 <%--    <script>--%>
 
 <%--        $.get("registration", function(responseText) {--%>
-<%--            $("#correct_email").text("Random number = 34");--%>
+<%--            $("#correct_email").text(responseText);--%>
 <%--        });--%>
 
 
@@ -44,7 +44,7 @@
 
 <div style="font-family:Comfortaa;font-size: 120%; margin: 20px 0px 0px 30px"><br/>
 
-    <form enctype="multipart/form-data" method="post">
+    <form enctype="multipart/form-data" method="post" action="setPhoto">
 
         <p style="font-size: small">Загрузите вашу фотографию</p>
         <p style=""><input type="file" name="photo" multiple accept="image/*,image/jpeg"><br/><br/>

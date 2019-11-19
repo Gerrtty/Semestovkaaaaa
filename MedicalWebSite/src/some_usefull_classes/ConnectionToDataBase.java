@@ -24,10 +24,12 @@ public class ConnectionToDataBase {
 
     private static void createConnection() {
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             Logger.green_write("Connect to data base");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             Logger.red_write("Connection to data base failed");
+            e.printStackTrace();
         }
     }
 

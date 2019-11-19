@@ -15,6 +15,7 @@
 
 </head>
 <body>
+
 <style>
     a.button7 {
         font-weight: 700;
@@ -32,12 +33,19 @@
         box-shadow: 0 3px rgb(33,147,90) inset;
     }
 </style>
+
 <style>body{
     background: url("photo/background.png"); background-size: 100% 220%;
 }</style>
+
 <p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG" , alt = "wait"></p>
 <h4 style="text-align: right;">Личный кабинет:</h4>
-<p style="text-align: right;"><strong><a href="" class="button7">Зарегестрироваться</style></a></strong> / <strong><a href="" class="button7">Вход</a></strong></p><br/>
+
+<p style="text-align: right; font-weight: bold">
+    <a href="registration" class="button7">Зарегестрироваться</a>
+    / <a href="authorization" class="button7" style="font-weight: bold">Вход</a>
+</p><br/>
+
 <h3 style="text-align: center;">Здравствуйте, если вы живете в Казани и ищете хорошую клинику,&nbsp;</h3>
 <h3 style="text-align: center;">то этот сайт поможет вам в этом.</h3>
 <h3 style="text-align: center;">На этом сайте вы сможете найти оценки и отзывы услуг разных клиник от&nbsp;</h3>

@@ -2,6 +2,7 @@ package servlets;
 
 import DAO.UserDAO;
 import ORM.User;
+import some_usefull_classes.ConnectionToDataBase;
 import some_usefull_classes.Email;
 import some_usefull_classes.Logger;
 import some_usefull_classes.Password;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
 
 public class AuthorizationServlet extends HttpServlet {
 

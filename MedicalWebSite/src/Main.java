@@ -15,5 +15,7 @@ public class Main {
         Password password1 = new Password("123pass");
         System.out.println(password1.getPassword());
 
+
+
     }
 }

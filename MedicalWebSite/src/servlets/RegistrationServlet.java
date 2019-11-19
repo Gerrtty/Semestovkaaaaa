@@ -37,7 +37,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Logger.green_write("Post method is called");
+        Logger.green_write("Post method from Registration servlet is called");
 
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
@@ -48,6 +48,8 @@ public class RegistrationServlet extends HttpServlet {
 
         Email email = new Email(login);
 
+        String s = "";
+
 
         if(!password.equals(confirm_password)) {
             Logger.red_write("Passwords not matching");
@@ -55,6 +57,7 @@ public class RegistrationServlet extends HttpServlet {
 
         if(!email.isCorrect()) {
             Logger.red_write("Email is not correct!");
+            s = "Email is not correct!";
         }
 
         else {
@@ -73,5 +76,10 @@ public class RegistrationServlet extends HttpServlet {
             }
 
         }
+
+        resp.setContentType("text/plain");
+        resp.setCharacterEncoding("UTF-8");
+
+        resp.getWriter().write(s);
     }
 }
