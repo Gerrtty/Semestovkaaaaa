@@ -24,6 +24,9 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap..">
 
+<p>User photo</p>
+<img wight="150" height="150" src="${loginedUser.ava}">
+
 <p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG" alt = "wait"></p>
 
 <h2 style="text-align: center;"><span style="color: #00ccff;">Личный кабинет</span></h2>

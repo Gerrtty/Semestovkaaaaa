@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class BuildingDAO implements DAO<Building> {
+
+    private static String SELECT_ALL = "SELECT * from semestrovka.User";
+
     public BuildingDAO() {
         super();
     }

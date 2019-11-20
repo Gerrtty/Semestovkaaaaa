@@ -1,27 +1,19 @@
 package servlets;
 
-import some_usefull_classes.Logger;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RegistrationServlet extends HttpServlet {
-
+public class Serv extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("reg.html").forward(req, resp);
-        Logger.green_write("Get method from Registration Servlet is called");
-        resp.setContentType("text/plain");
-        resp.setCharacterEncoding("UTF-8");
+        req.getRequestDispatcher("nums.html").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Logger.green_write("Post method from Registration servlet is called");
-
+        super.doPost(req, resp);
     }
-
 }

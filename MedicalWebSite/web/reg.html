@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yuliya
-  Date: 19.11.19
-  Time: 12:46
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,14 +6,33 @@
     <title>File Upload to Database Demo</title>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script>
+
+        $(document).on("click", "#submit", function() {
+            $.get("/uploadServlet", function(responseText) {
+                console.log("ajax");
+                $("#correct_email").text(responseText);
+            });
+            // return false;
+        });
+
+        var email = document.getElementById('email').value;
+
+        $(document).on("click", "#submit", function() {
+            $.ajax("/uploadServlet", email , function(responseText) {
+                console.log("ajax");
+                $("#correct_email").text(responseText);
+            });
+            // return false;
+        });
+
+    </script>
 
 </head>
 <body>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 
 <style>body{
     background: url("photo/background.png");
@@ -69,38 +80,9 @@
     <div id="correct_email"></div>
 
     <div class="block_for_input">
-    Пароль: <input type="password" id="input_test" name="pass" required onkeyup='passcorr()'/>
-
-        <script>
-            function passcorr() {
-                var pass = document.getElementById("input_test").value;
-                var button = document.getElementById("submit");
-                var p = /^[a-zA-Z0-9]+$/;
-                if (p.test(pass))
-                {
-                    err = ""; // ничего не пишем так как вывести нужно только одно Успешно
-                    // button.disabled = false;
-                } else {
-                    // button.disabled = true;
-                    err = "<p color=\'red\'> Введены недопустимые символы! Разрешены только латинские буквы и цифры!</p>";
-                    document.getElementById("err").innerHTML=err;
-                    exit; // прерываем так как есть ошибка
-                }
-                if (pass.length>=6&&pass.length<=20){
-                    // button.disabled = false;
-                    err = "<p color=\'green\'>Успешно!</p>";
-                } else {
-                    // button.disabled = true;
-                    err = "<p color=\'red\'>Пароль неверной длины. Пароль должен быть не менее 6 и не более 20 символов!</p>";
-                    document.getElementById("err").innerHTML=err;
-                    exit;
-                }
-                document.getElementById("err").innerHTML=err;
-            }
-        </script>
+    Пароль: <input type="password" id="input_test" name="pass" required/>
 
         <div id="block_check" name="block_check"></div>
-<%--        <div id="err"></div>--%>
 
     </div>
     Повторите пароль: <input type = "password" id="2pass" name="confirm_pass" required></br></br>
@@ -178,7 +160,7 @@
 
         <label for="checkbox">Настоящим подтверждаю, что я согласен на обработку персональных данных</label><br/>
 
-        <input type="submit" disabled="disabled" name="submit" id="submit">Зарегестрироваться</input>
+        <button disabled="disabled" id="submit">Зарегестрироваться</button>
     </div>
 
 </form>

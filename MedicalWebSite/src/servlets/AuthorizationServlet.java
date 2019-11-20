@@ -57,8 +57,7 @@ public class AuthorizationServlet extends HttpServlet {
                 if (requestUri != null) {
                     resp.sendRedirect(requestUri);
                 } else {
-                    // По умолчанию после успешного входа в систему
-                    // перенаправить на страницу /userInfo
+
                     resp.sendRedirect(req.getContextPath() + "/profile");
                 }
 

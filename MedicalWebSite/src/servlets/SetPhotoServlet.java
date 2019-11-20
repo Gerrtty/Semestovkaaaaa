@@ -1,32 +1,44 @@
 package servlets;
 
 import DAO.UserDAO;
-import ORM.User;
 import some_usefull_classes.Email;
 import some_usefull_classes.Logger;
 import some_usefull_classes.Password;
 import some_usefull_classes.Phone;
+import utills.AppUtils;
+import utills.ImgUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
-@WebServlet("/uploadServlet")
-@MultipartConfig(maxFileSize = 16177215)
 
 public class SetPhotoServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+        Logger.green_write("SetPhotoServlet get method is called");
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        Email email = new Email(req.getParameter("email"));
+        System.out.println(email.getEmail());
+        String s = "Ok";
+        System.out.println(email.getEmail() == null);
+        if (email.getEmail() == null) {
+            s = "not ok";
+        }
+//        if(email == null) {
+//            s = "not ok";
+//        }
+//        else if(!email.isCorrect() ) {
+//            s = "not ok";
+//        }
 
+        response.getWriter().write(s);
     }
 
     protected void doPost(HttpServletRequest req,
@@ -41,8 +53,7 @@ public class SetPhotoServlet extends HttpServlet {
         Email email = new Email(login);
         Phone user_phone = new Phone(phone);
 
-        InputStream inputStream = getInputStream(req);
-
+        InputStream inputStream = new ImgUtil().getInputStream(req);
 
         if(correctParams(password, req.getParameter("confirm_pass"), email, user_phone)) {
 
@@ -55,7 +66,7 @@ public class SetPhotoServlet extends HttpServlet {
 
             else {
                 System.out.println("Creating");
-                createUser(userDAO,
+                new AppUtils().createUser(userDAO,
                            req.getParameter("firstName"),
                            req.getParameter("lastName"),
                            email,
@@ -65,65 +76,20 @@ public class SetPhotoServlet extends HttpServlet {
                            inputStream);
 
                 Logger.green_write("User is created");
-                resp.getWriter().write("");
                 resp.sendRedirect("profile");
             }
 
         }
 
         else {
-            resp.getWriter().write("Incorrect email or phone or passwords not matching");
+//            resp.getWriter().write("Incorrect email or phone or passwords not matching");
+            doGet(req, resp);
         }
 
     }
 
-    private InputStream getInputStream(HttpServletRequest request) {
 
-        InputStream inputStream = null;
 
-        // obtains the upload file part in this multipart request
-        Part filePart = null;
-
-        try {
-            filePart = request.getPart("photo");
-
-            if(filePart != null) {
-                inputStream = filePart.getInputStream();
-                System.out.println(filePart.getName());
-                System.out.println(filePart.getSize());
-                System.out.println(filePart.getContentType());
-            }
-
-        } catch (IOException | ServletException e) {
-            e.printStackTrace();
-        }
-
-        return inputStream;
-    }
-
-    private void createUser(UserDAO userDAO,
-                            String firstName,
-                            String lastName,
-                            Email email,
-                            Password password,
-                            String gender,
-                            Phone phone,
-                            InputStream inputStream) {
-
-        User user = new User(firstName, lastName, email, password.getPassword());
-
-        // This fields is not mandatory, can be null
-        user.setGender(gender);
-        user.setPhone(phone);
-        user.setPhoto(inputStream);
-        System.out.println(gender);
-        System.out.println(phone);
-        System.out.println(inputStream);
-
-        userDAO.add(user);
-
-        Logger.green_write("User is created");
-    }
 
     private boolean correctParams(String password,
                                   String confirm_password,

@@ -1,30 +1,33 @@
 package ORM;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Building implements Serializable {
 
     private int building_id;
-    private Address addrees;
+    private Address address;
+    private List<Building> list_of_building;
 
     public Building() {
-
+        list_of_building = new ArrayList<>();
     }
 
-    public Building(Address addrees) {
-        this.addrees = addrees;
+    public Building(Address address) {
+        this.address = address;
     }
 
-    public Address getAddrees() {
-        return addrees;
+    public Address getAddress() {
+        return address;
     }
 
     public int getBuilding_id() {
         return building_id;
     }
 
-    public void setAddrees(Address addrees) {
-        this.addrees = addrees;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public void setBuilding_id(int building_id) {

@@ -1,11 +1,17 @@
 package utills;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import DAO.UserDAO;
 import ORM.User;
+import some_usefull_classes.Email;
+import some_usefull_classes.Logger;
+import some_usefull_classes.Password;
+import some_usefull_classes.Phone;
 
 public class AppUtils {
 
@@ -46,6 +52,30 @@ public class AppUtils {
             return url;
         }
         return null;
+    }
+
+    public void createUser(UserDAO userDAO,
+                            String firstName,
+                            String lastName,
+                            Email email,
+                            Password password,
+                            String gender,
+                            Phone phone,
+                            InputStream inputStream) {
+
+        User user = new User(firstName, lastName, email, password.getPassword());
+
+        // This fields is not mandatory, can be null
+        user.setGender(gender);
+        user.setPhone(phone);
+        user.setPhoto(inputStream);
+        System.out.println(gender);
+        System.out.println(phone);
+        System.out.println(inputStream);
+
+        userDAO.add(user);
+
+        Logger.green_write("User is created");
     }
 
 }

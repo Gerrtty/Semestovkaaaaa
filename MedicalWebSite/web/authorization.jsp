@@ -40,7 +40,7 @@
 
         <div class="footer">
             <input type="submit" name="submit" value="ВОЙТИ" class="button" />
-            <input type="submit" name="submit" value="Регистрация" class="register" />
+            <a href="registration" name="submit" class="register">Регистрация</a>
         </div>
 
     </form>

@@ -30,15 +30,6 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/mainPage</url-pattern>
     </servlet-mapping>
-
-    <servlet>
-        <servlet-name>photo</servlet-name>
-        <servlet-class>servlets.SetPhoto</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>photo</servlet-name>
-        <url-pattern>/setPhoto</url-pattern>
-    </servlet-mapping>
     
     <servlet>
         <servlet-name>forum</servlet-name>
@@ -76,4 +67,39 @@
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>uploadServlet</servlet-name>
+        <servlet-class>servlets.SetPhotoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadServlet</servlet-name>
+        <url-pattern>/uploadServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>check</servlet-name>
+        <servlet-class>servlets.AjaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>check</servlet-name>
+        <url-pattern>/check</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>random</servlet-name>
+        <servlet-class>servlets.RandomNumsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>random</servlet-name>
+        <url-pattern>/random</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>s</servlet-name>
+        <servlet-class>servlets.Serv</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>s</servlet-name>
+        <url-pattern>/s</url-pattern>
+    </servlet-mapping>
 </web-app>

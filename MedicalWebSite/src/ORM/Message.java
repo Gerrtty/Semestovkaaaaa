@@ -7,6 +7,10 @@ public class Message implements Serializable {
     private int message_id;
     private Text text;
 
+    public Message(Text text) {
+        this.text = text;
+    }
+
     public void Message() {
 
     }

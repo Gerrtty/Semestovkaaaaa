@@ -3,8 +3,9 @@ package ORM;
 import some_usefull_classes.Email;
 import some_usefull_classes.Phone;
 
-import java.io.InputStream;
-import java.io.Serializable;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -23,6 +24,16 @@ public class User implements Serializable {
     private InputStream photo;
     private Phone phone;
     private List<String> roles;
+    private BufferedImage ava;
+    private byte[] imgData;
+
+    public byte[] getImgData() {
+        return imgData;
+    }
+
+    public void setImgData(byte[] imgData) {
+        this.imgData = imgData;
+    }
 
     private void initRoles(String... roles) {
 
@@ -159,5 +170,32 @@ public class User implements Serializable {
 
     public List<String> getRoles() {
         return roles;
+    }
+
+    public BufferedImage getAva() {
+        return ava;
+    }
+
+    public void setAva(BufferedImage ava) {
+        InputStream is = photo;
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+        int nRead = 0;
+        byte[] data = new byte[16384];
+
+        while (true) {
+            try {
+                if (!((nRead = is.read(data, 0, data.length)) != -1)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            buffer.write(data, 0, nRead);
+        }
+
+        try {
+            this.ava = ImageIO.read(new ByteArrayInputStream(buffer.toByteArray()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

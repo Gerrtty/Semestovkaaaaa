@@ -29,5 +29,15 @@ public class Text {
         return date;
     }
 
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }
