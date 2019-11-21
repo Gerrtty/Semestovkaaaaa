@@ -1,7 +1,7 @@
 package some_usefull_classes;
 import java.util.regex.Pattern;
 
-public class Email {
+public class Email implements isCorrect{
     private String email;
 
     private static final String EMAIL_PATTERN = "^[_0-9a-z-\\.]+\\@[0-9a-z-]{2,}\\.[a-z]{2,}$";

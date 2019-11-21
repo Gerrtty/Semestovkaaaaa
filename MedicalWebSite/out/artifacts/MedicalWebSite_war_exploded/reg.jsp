@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,28 +11,6 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-    <script>
-
-        $(document).on("click", "#submit", function() {
-            $.get("/uploadServlet", function(responseText) {
-                console.log("ajax");
-                $("#correct_email").text(responseText);
-            });
-            // return false;
-        });
-
-        var email = document.getElementById('email').value;
-
-        $(document).on("click", "#submit", function() {
-            $.ajax("/uploadServlet", email , function(responseText) {
-                console.log("ajax");
-                $("#correct_email").text(responseText);
-            });
-            // return false;
-        });
-
-    </script>
 
 </head>
 <body>
@@ -50,9 +31,9 @@
 <img wight="150" height="150" src="photo/userPhoto.png">
 
 
-<form method="post" action="uploadServlet" enctype="multipart/form-data">
+<form method="post" action="uploadServlet">
 
-    <input type="file" name="photo" multiple accept="image/*,image/jpeg"><br/><br/>
+<%--    <input type="file" id="photo" name="photo" multiple accept="image/*,image/jpeg"><br/><br/>--%>
 
     Имя: <input type="text" name="firstName" id="firstName" required/><br/><br/>
 
@@ -73,19 +54,18 @@
     </style>
 
     Пол:
-    <input type="radio" name="sex" value="male"/>Мужской
-    <input type="radio" name="sex" value="female"/>Женский<br/><br/>
+    <input type="radio" name="sex" id="male" value="male"/>Мужской
+    <input type="radio" name="sex" id="female" value="female"/>Женский<br/><br/>
 
     Логин(почта): <input type="text" name="email" id="email" required/><br/>
-    <div id="correct_email"></div>
 
     <div class="block_for_input">
-    Пароль: <input type="password" id="input_test" name="pass" required/>
+    Пароль: <input type="password" id="pass" name="pass" required/>
 
         <div id="block_check" name="block_check"></div>
 
     </div>
-    Повторите пароль: <input type = "password" id="2pass" name="confirm_pass" required></br></br>
+    Повторите пароль: <input type = "password" id="confirm_pass" name="confirm_pass" required></br></br>
     Номер телефона: <input type = "text" id="phone" name="phone" required></br></br>
 
     <script>
@@ -93,7 +73,7 @@
         var b_letters = "QWERTYUIOPLKJHGFDSAZXCVBNM"; // Буквы в верхнем регистре
         var digits = "0123456789"; // Цифры
         var specials = "!@#$%^&*()_-+=\|/.,:;[]{}"; // Спецсимволы
-        var input_test = document.getElementById('input_test');//получаем поле
+        var input_test = document.getElementById('pass');//получаем поле
         var block_check = document.getElementById('block_check');//получаем блок с индикатором
         input_test.addEventListener('keyup', function(evt){
             var input_test_val = input_test.value;//получаем значение из поля
@@ -154,13 +134,44 @@
 
     </script>
 
+
+    <script>
+
+        $(document).on("click", "#b", function() {
+            $.ajax({
+                type: "post",
+                url: "uploadServlet",
+                data: {"email":document.getElementById('email').value,
+                    "firstName":document.getElementById('firstName').value,
+                    "lastName":document.getElementById('lastName').value,
+                    "pass":document.getElementById('pass').value,
+                    "confirm_pass":document.getElementById('confirm_pass').value,
+                    "phone":document.getElementById('phone').value
+                },
+                success: function(data) {
+                    if(data === 'ok') {
+                        document.location.href="/profile";
+                    }
+                    else {
+                        document.getElementById('correct_email').style.color = 'red';
+                        $("#correct_email").text(data);
+                    }
+                }
+            });
+            return false;
+        });
+
+    </script>
+
+    <div id="correct_email"></div>
+
     <div class="formname">
 
-        <input id="checkbox" type="checkbox" name="checkbox" onchange="document.getElementById('submit').disabled = !this.checked;" />
+        <input id="checkbox" type="checkbox" name="checkbox" onchange="document.getElementById('b').disabled = !this.checked;" />
 
         <label for="checkbox">Настоящим подтверждаю, что я согласен на обработку персональных данных</label><br/>
 
-        <button disabled="disabled" id="submit">Зарегестрироваться</button>
+        <button disabled="disabled" id="b">Зарегестрироваться</button>
     </div>
 
 </form>

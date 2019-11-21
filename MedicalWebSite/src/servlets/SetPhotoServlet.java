@@ -6,10 +6,8 @@ import some_usefull_classes.Logger;
 import some_usefull_classes.Password;
 import some_usefull_classes.Phone;
 import utills.AppUtils;
-import utills.ImgUtil;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,21 +22,6 @@ public class SetPhotoServlet extends HttpServlet {
         Logger.green_write("SetPhotoServlet get method is called");
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
-        Email email = new Email(req.getParameter("email"));
-        System.out.println(email.getEmail());
-        String s = "Ok";
-        System.out.println(email.getEmail() == null);
-        if (email.getEmail() == null) {
-            s = "not ok";
-        }
-//        if(email == null) {
-//            s = "not ok";
-//        }
-//        else if(!email.isCorrect() ) {
-//            s = "not ok";
-//        }
-
-        response.getWriter().write(s);
     }
 
     protected void doPost(HttpServletRequest req,
@@ -46,22 +29,41 @@ public class SetPhotoServlet extends HttpServlet {
 
         Logger.green_write("Post method from Upload Servlet");
 
-        String login = req.getParameter("email");
-        String password = req.getParameter("pass");
+        String email = req.getParameter("email");
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        String pass = req.getParameter("pass");
+        String confirm_pass = req.getParameter("confirm_pass");
         String phone = req.getParameter("phone");
 
-        Email email = new Email(login);
+        System.out.println(email);
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(pass);
+        System.out.println(confirm_pass);
+        System.out.println(phone);
+
+        String errorString = "";
+        Email login = new Email(email);
         Phone user_phone = new Phone(phone);
 
-        InputStream inputStream = new ImgUtil().getInputStream(req);
-
-        if(correctParams(password, req.getParameter("confirm_pass"), email, user_phone)) {
-
+        if(!pass.equals(confirm_pass) || !login.isCorrect() || !user_phone.isCorrect()) {
+            if(!pass.equals(confirm_pass)) {
+                errorString += "passwords not matching ";
+            }
+            if(!login.isCorrect()) {
+                errorString += "email is not correct ";
+            }
+            if(!user_phone.isCorrect()) {
+                errorString += "phone is not correct";
+            }
+        }
+        else {
             UserDAO userDAO = new UserDAO();
 
-            if(userDAO.getUserByLogin(email) != null) {
+            if(userDAO.getUserByLogin(login) != null) {
                 Logger.red_write("This user is already exists!");
-                resp.getWriter().write("User is already exists");
+                errorString += " User is already exists";
             }
 
             else {
@@ -69,50 +71,20 @@ public class SetPhotoServlet extends HttpServlet {
                 new AppUtils().createUser(userDAO,
                            req.getParameter("firstName"),
                            req.getParameter("lastName"),
-                           email,
-                           new Password(password),
-                           req.getParameter("sex"),
-                           user_phone,
-                           inputStream);
+                           login,
+                           new Password(pass),
+                           user_phone);
 
                 Logger.green_write("User is created");
-                resp.sendRedirect("profile");
-            }
 
+                errorString = "ok";
+            }
         }
 
-        else {
-//            resp.getWriter().write("Incorrect email or phone or passwords not matching");
-            doGet(req, resp);
-        }
+        resp.getWriter().write(errorString);
 
-    }
+//        InputStream inputStream = new ImgUtil().getInputStream(req);
 
-
-
-
-    private boolean correctParams(String password,
-                                  String confirm_password,
-                                  Email email,
-                                  Phone phone) {
-
-        if(!password.equals(confirm_password) || !email.isCorrect() || !phone.isCorrect()) {
-            if(!password.equals(confirm_password)) {
-                Logger.red_write("Passwords not matching");
-            }
-
-            if(!email.isCorrect()) {
-                Logger.red_write("Email is not correct!");
-            }
-
-            if(!phone.isCorrect()) {
-                Logger.red_write("Phone is not correct!");
-            }
-
-            return false;
-        }
-
-        return true;
     }
 
 }

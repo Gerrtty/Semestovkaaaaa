@@ -13,7 +13,7 @@ public class UserDAO implements DAO<User> {
     private User user;
 
     private static String sql = "INSERT INTO semestrovka.User (firstName, lastName, email, password," +
-            "phone, aboute_user, photo, gender, role)" +
+            "phone, aboute_user, photo)" +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static String userIsExists = "SELECT login FROM semestrovka.User";
@@ -43,9 +43,6 @@ public class UserDAO implements DAO<User> {
             preparedStatement.setString(4, user.getPassword());
             preparedStatement.setString(5, user.getPhone());
             preparedStatement.setString(6, user.getAbout_user());
-            preparedStatement.setBlob(7, user.getPhoto());
-            preparedStatement.setString(8, user.getGender());
-            preparedStatement.setString(9, user.getRoles().get(0));
 
             preparedStatement.executeUpdate();
 

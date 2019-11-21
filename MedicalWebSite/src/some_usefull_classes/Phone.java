@@ -2,7 +2,7 @@ package some_usefull_classes;
 
 import java.util.regex.Pattern;
 
-public class Phone {
+public class Phone implements isCorrect{
     private String phone;
 
     private static final String EMAIL_PATTERN = "^(\\s*)?(\\+)?([- _():=+]?\\d[- _():=+]?){10,14}(\\s*)?$";

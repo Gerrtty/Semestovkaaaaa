@@ -24,6 +24,8 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap..">
 
+<a href="mainPage">Main page</a>
+
 <p>User photo</p>
 <img wight="150" height="150" src="${loginedUser.ava}">
 

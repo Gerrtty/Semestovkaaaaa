@@ -59,19 +59,14 @@ public class AppUtils {
                             String lastName,
                             Email email,
                             Password password,
-                            String gender,
-                            Phone phone,
-                            InputStream inputStream) {
+                            Phone phone) {
 
         User user = new User(firstName, lastName, email, password.getPassword());
 
         // This fields is not mandatory, can be null
-        user.setGender(gender);
         user.setPhone(phone);
-        user.setPhoto(inputStream);
-        System.out.println(gender);
-        System.out.println(phone);
-        System.out.println(inputStream);
+
+        System.out.println(phone.getPhone());
 
         userDAO.add(user);
 
