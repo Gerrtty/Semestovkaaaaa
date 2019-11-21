@@ -13,8 +13,8 @@ public class UserDAO implements DAO<User> {
     private User user;
 
     private static String sql = "INSERT INTO semestrovka.User (firstName, lastName, email, password," +
-            "phone, aboute_user, photo)" +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            "phone, aboute_user)" +
+            "VALUES (?, ?, ?, ?, ?, ?)";
 
     private static String userIsExists = "SELECT login FROM semestrovka.User";
 

@@ -1,6 +1,7 @@
 package servlets;
 
 import DAO.UserDAO;
+import ORM.User;
 import some_usefull_classes.Email;
 import some_usefull_classes.Logger;
 import some_usefull_classes.Password;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class SetPhotoServlet extends HttpServlet {
@@ -68,7 +70,7 @@ public class SetPhotoServlet extends HttpServlet {
 
             else {
                 System.out.println("Creating");
-                new AppUtils().createUser(userDAO,
+                User user = new AppUtils().createUser(userDAO,
                            req.getParameter("firstName"),
                            req.getParameter("lastName"),
                            login,
@@ -78,6 +80,9 @@ public class SetPhotoServlet extends HttpServlet {
                 Logger.green_write("User is created");
 
                 errorString = "ok";
+
+                HttpSession session = req.getSession();
+                session.setAttribute("loginedUser", user);
             }
         }
 

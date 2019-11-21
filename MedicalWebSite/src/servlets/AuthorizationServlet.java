@@ -2,16 +2,11 @@ package servlets;
 
 import DAO.UserDAO;
 import ORM.User;
-import some_usefull_classes.Email;
-import some_usefull_classes.Logger;
-import some_usefull_classes.Password;
+import some_usefull_classes.*;
 import utills.AppUtils;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 public class AuthorizationServlet extends HttpServlet {
@@ -43,27 +38,10 @@ public class AuthorizationServlet extends HttpServlet {
 
             if(user.getPassword().equals(new Password(password).getPassword())) {
                 Logger.green_write("Right password!");
+
                 AppUtils.storeLoginedUser(req.getSession(), user);
 
-                int redirectId = -1;
-
-                try {
-                    redirectId = Integer.parseInt(req.getParameter("redirectId"));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                String requestUri = AppUtils.getRedirectAfterLoginUrl(req.getSession(), redirectId);
-
-                if (requestUri != null) {
-                    resp.sendRedirect(requestUri);
-                } else {
-
-                    resp.sendRedirect(req.getContextPath() + "/profile");
-                }
-
-                HttpSession session = req.getSession();
-                session.setAttribute("auth", true);
+                AppUtils.auth(req, resp, user);
 
             }
 

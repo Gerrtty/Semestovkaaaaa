@@ -1,9 +1,11 @@
 package utills;
 
-import java.io.InputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.UserDAO;
@@ -20,13 +22,12 @@ public class AppUtils {
     private static final Map<Integer, String> id_uri_map = new HashMap<Integer, String>();
     private static final Map<String, Integer> uri_id_map = new HashMap<String, Integer>();
 
-    // Сохранить информацию пользователя в Session.
+
     public static void storeLoginedUser(HttpSession session, User loginedUser) {
-        // На JSP можно получить доступ через ${loginedUser}
+
         session.setAttribute("loginedUser", loginedUser);
     }
 
-    // Получить информацию пользователя, сохраненную в Session.
     public static User getLoginedUser(HttpSession session) {
         User loginedUser = (User) session.getAttribute("loginedUser");
         return loginedUser;
@@ -47,6 +48,7 @@ public class AppUtils {
     }
 
     public static String getRedirectAfterLoginUrl(HttpSession session, int redirectId) {
+
         String url = id_uri_map.get(redirectId);
         if (url != null) {
             return url;
@@ -54,7 +56,7 @@ public class AppUtils {
         return null;
     }
 
-    public void createUser(UserDAO userDAO,
+    public User createUser(UserDAO userDAO,
                             String firstName,
                             String lastName,
                             Email email,
@@ -71,6 +73,31 @@ public class AppUtils {
         userDAO.add(user);
 
         Logger.green_write("User is created");
+
+        return user;
+    }
+
+    public static void auth(HttpServletRequest req, HttpServletResponse resp, User user) throws IOException {
+        AppUtils.storeLoginedUser(req.getSession(), user);
+
+        int redirectId = -1;
+
+        try {
+            redirectId = Integer.parseInt(req.getParameter("redirectId"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String requestUri = AppUtils.getRedirectAfterLoginUrl(req.getSession(), redirectId);
+
+        if (requestUri != null) {
+            resp.sendRedirect(requestUri);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/profile");
+        }
+
+        HttpSession session = req.getSession();
+        session.setAttribute("auth", true);
     }
 
 }
