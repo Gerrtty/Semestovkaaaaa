@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+
+    <script>
+        function previewFile() {
+            var preview = document.getElementById('avatar');
+            var file    = document.querySelector('input[type=file]').files[0];
+            var reader  = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+<p>Загрузите вашу фотографию</p>
+
+<img wight="150" id="avatar" height="150" src="photo/userPhoto.png">
+
+<form method="post" action="test" enctype="multipart/form-data">
+    <input type="file" id="file" name="photo" multiple accept="image/*,image/jpeg" onchange="previewFile()">
+    <br/><br/>
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Assessment implements Serializable {
 
-    private int assessment_id;
+    private int id;
     private int building_service_id;
     private int user_id;
     private int assessment;
@@ -17,8 +17,8 @@ public class Assessment implements Serializable {
 
     }
 
-    public int getAssessment_id() {
-        return assessment_id;
+    public int getId() {
+        return id;
     }
 
     public int getBuilding_service_id() {
@@ -33,8 +33,8 @@ public class Assessment implements Serializable {
         return assessment;
     }
 
-    public void setAssessment_id(int assessment_id) {
-        this.assessment_id = assessment_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setBuilding_service_id(int building_service_id) {

@@ -17,7 +17,7 @@ public class ServiceBuildinng implements Serializable {
         this.service = service;
         this.building = building;
         this.service_id = service.getService_id();
-        this.building_id = building.getBuilding_id();
+        this.building_id = building.getId();
     }
 
     public ServiceBuildinng(int service_id, int building_id) {

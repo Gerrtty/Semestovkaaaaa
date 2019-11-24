@@ -2,17 +2,11 @@ package ORM;
 
 import some_usefull_classes.Email;
 import some_usefull_classes.Phone;
-
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletResponse;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
-public class User implements Serializable {
+public class User implements Serializable, interfaces.ImgUtil {
+    private static String folderName = "/user/";
     
     private int id;
     private String firstName;
@@ -24,26 +18,11 @@ public class User implements Serializable {
     private String about_user;
     private InputStream photo;
     private Phone phone;
-    private List<String> roles;
-    private BufferedImage ava;
-    private byte[] imgData;
+    private String role;
+
     private String token;
+    private String img;
 
-    public byte[] getImgData() {
-        return imgData;
-    }
-
-    public void setImgData(byte[] imgData) {
-        this.imgData = imgData;
-    }
-
-    private void initRoles(String... roles) {
-
-        this.roles = new ArrayList<String>();
-        if (roles != null) {
-            this.roles.addAll(Arrays.asList(roles));
-        }
-    }
 
     public User(String firstName, String lastName, Email email, String password) {
         this.firstName = firstName;
@@ -62,7 +41,7 @@ public class User implements Serializable {
     }
 
     public User(String firstName, String lastName, Email email, String password, String gender,
-             String about_user, InputStream photo, Phone phone, String... roles) {
+             String about_user, Phone phone) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -70,9 +49,8 @@ public class User implements Serializable {
         this.password = password;
         this.gender = gender;
         this.about_user = about_user;
-        this.photo = photo;
         this.phone = phone;
-        initRoles(roles);
+        this.role = "user";
     }
 
     public void User(String firstName, String lastName, Email email, String password) {
@@ -84,6 +62,11 @@ public class User implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String folderName() {
+        return folderName;
     }
 
     public String getFirstName() {
@@ -166,46 +149,19 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public BufferedImage getAva() {
-        return ava;
-    }
-
-    public void setAva(BufferedImage ava) {
-        InputStream is = photo;
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-
-        int nRead = 0;
-        byte[] data = new byte[16384];
-
-        while (true) {
-            try {
-                if (!((nRead = is.read(data, 0, data.length)) != -1)) break;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            buffer.write(data, 0, nRead);
-        }
-
-        try {
-            this.ava = ImageIO.read(new ByteArrayInputStream(buffer.toByteArray()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void setToken(String token) {
         this.token = token;
     }
 
     public String getToken() {
         return token;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

@@ -1,6 +1,7 @@
 package DAO;
 
 import ORM.ServiceBuildinng;
+import interfaces.DAO;
 
 import java.util.List;
 import java.util.Optional;

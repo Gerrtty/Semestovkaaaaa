@@ -1,6 +1,7 @@
 package DAO;
 
 import ORM.Imagies;
+import interfaces.DAO;
 
 import java.util.List;
 import java.util.Optional;

@@ -11,30 +11,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 @WebServlet("/uploadServlet")
-public class SetPhotoServlet extends HttpServlet {
+public class RegServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        Logger.green_write("SetPhotoServlet get method is called");
-
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
+        Logger.green_write("RegServlet get method is called");
     }
 
     protected void doPost(HttpServletRequest req,
                           HttpServletResponse resp) throws ServletException, IOException {
 
-        Logger.green_write("Post method from SetPhotoServlet");
+        Logger.green_write("Post method from RegServlet");
 
-        String email = req.getParameter("email");
         String pass = req.getParameter("pass");
         String confirm_pass = req.getParameter("confirm_pass");
-        String phone = req.getParameter("phone");
 
         String errorString = "";
 
-        Email login = new Email(email);
-        Phone user_phone = new Phone(phone);
+        Email login = new Email(req.getParameter("email"));
+        Phone user_phone = new Phone(req.getParameter("phone"));
 
         if(!pass.equals(confirm_pass) || !login.isCorrect() || !user_phone.isCorrect()) {
             if(!pass.equals(confirm_pass)) {
@@ -58,7 +53,6 @@ public class SetPhotoServlet extends HttpServlet {
             }
 
             else {
-                System.out.println("Creating user");
 
                 User user = new AppUtils().createUser(userDAO,
                            req.getParameter("firstName"),

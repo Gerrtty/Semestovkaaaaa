@@ -1,5 +1,6 @@
 package servlets;
 
+import some_usefull_classes.Logger;
 import utills.CookieUtil;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Logger.green_write("LogoutServlet get method is called");
+
         new CookieUtil().clearCookie(req, resp);
         resp.sendRedirect("/authorization");
     }

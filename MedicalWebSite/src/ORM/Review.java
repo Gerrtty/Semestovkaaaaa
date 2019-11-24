@@ -6,5 +6,4 @@ public class Review {
     private int building_service_id;
     private Text text;
 
-
 }

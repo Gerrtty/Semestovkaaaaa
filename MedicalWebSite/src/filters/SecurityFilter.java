@@ -53,10 +53,10 @@ public class SecurityFilter implements Filter {
             String userName = loginedUser.getEmail().getEmail();
 
             // Роли (Role).
-            List<String> roles = loginedUser.getRoles();
+//            List<String> roles = loginedUser.getRoles();
 
-            // Старый пакет request с помощью нового Request с информацией userName и Roles.
-            wrapRequest = new UserRoleRequestWrapper(userName, roles, request);
+//            // Старый пакет request с помощью нового Request с информацией userName и Roles.
+//            wrapRequest = new UserRoleRequestWrapper(userName, roles, request);
         }
 
         // Страницы требующие входа в систему.

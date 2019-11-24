@@ -3,12 +3,10 @@ package DAO;
 import ORM.Message;
 import ORM.Text;
 import ORM.User;
+import interfaces.DAO;
 import some_usefull_classes.ConnectionToDataBase;
-import some_usefull_classes.Email;
 import some_usefull_classes.Logger;
-import some_usefull_classes.Phone;
 
-import java.io.InputStream;
 import java.sql.*;
 import java.util.List;
 import java.util.Optional;

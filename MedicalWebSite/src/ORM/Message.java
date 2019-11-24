@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Message implements Serializable {
 
-    private int message_id;
+    private int id;
     private Text text;
 
     public Message(Text text) {
@@ -19,12 +19,12 @@ public class Message implements Serializable {
         this.text = text;
     }
 
-    public int getMessage_id() {
-        return message_id;
+    public int getId() {
+        return id;
     }
 
-    public void setMessage_id(int message_id) {
-        this.message_id = message_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Text getText() {

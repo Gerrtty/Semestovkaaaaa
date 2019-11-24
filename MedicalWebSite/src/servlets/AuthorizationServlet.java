@@ -4,6 +4,7 @@ import DAO.UserDAO;
 import ORM.User;
 import some_usefull_classes.*;
 import utills.AppUtils;
+import utills.CookieUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,6 +47,10 @@ public class AuthorizationServlet extends HttpServlet {
                 AppUtils.auth(req, resp, user);
 
                 req.getSession().setAttribute("loginedUser", user);
+
+                if(req.getParameter("remember_me") != null) {
+                    new CookieUtil().addCookie(resp, user);
+                }
 
             }
 

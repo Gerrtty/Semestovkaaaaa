@@ -13,6 +13,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <title>Medical.Care.PersonalArea</title>
 </head>
 <body>
@@ -21,13 +22,16 @@
     background: url("photo/background.png"); background-size: 150% 425%;
 }</style>
 
+<form>
+    <input type="button" value="Main page" onClick='location.href="mainPage"'>
+</form>
+<br/>
+<form method="post" action="logout">
+    <button type="submit">Logout</button>
+</form>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap..">
-
-<a href="mainPage">Main page</a>
-
-<p>User photo</p>
-<img wight="150" height="150" src="${loginedUser.ava}">
+<%--<p>User photo</p>--%>
+<%--<img wight="150" height="150" src="${loginedUser.ava}">--%>
 
 <p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG" alt = "wait"></p>
 

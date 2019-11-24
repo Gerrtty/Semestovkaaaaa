@@ -36,6 +36,9 @@
         <div class="content">
             <input name="username" type="text" class="input username" value="Логин" onfocus="this.value=''" required />
             <input name="password" type="password" class="input password" value="Пароль" onfocus="this.value=''" required/>
+            <br/><br/>
+            <input id="remember_me" type="checkbox" name="remember_me" />
+            <label for="remember_me">Remember me</label>
         </div>
 
         <div class="footer">
@@ -65,7 +68,6 @@
             $(".pass-icon").css("left","0px");
         });
     });
-
 </script>
 
 </body>

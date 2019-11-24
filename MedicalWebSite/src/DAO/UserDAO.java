@@ -1,6 +1,7 @@
 package DAO;
 
 import ORM.User;
+import interfaces.DAO;
 import some_usefull_classes.*;
 
 import java.io.InputStream;
@@ -92,9 +93,7 @@ public class UserDAO implements DAO<User> {
                                     rs.getString("password"),
                                     rs.getString("gender"),
                                     rs.getString("aboute_user"),
-                                    inputStream,
-                                    new Phone(rs.getString("phone")),
-                                    rs.getString("role"));
+                                    new Phone(rs.getString("phone")));
                 }
             }
 

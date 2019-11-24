@@ -1,6 +1,7 @@
 package DAO;
 
 import ORM.Comment;
+import interfaces.DAO;
 
 import java.util.List;
 import java.util.Optional;

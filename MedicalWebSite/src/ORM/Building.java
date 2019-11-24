@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Building implements Serializable {
+public class Building implements Serializable, interfaces.ImgUtil {
 
-    private int building_id;
+    private int id;
     private Address address;
     private List<Building> list_of_building;
+    private static String folder = "/building/";
 
     public Building() {
         list_of_building = new ArrayList<>();
@@ -22,15 +23,20 @@ public class Building implements Serializable {
         return address;
     }
 
-    public int getBuilding_id() {
-        return building_id;
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String folderName() {
+        return folder;
     }
 
     public void setAddress(Address address) {
         this.address = address;
     }
 
-    public void setBuilding_id(int building_id) {
-        this.building_id = building_id;
+    public void setId(int id) {
+        this.id = id;
     }
 }

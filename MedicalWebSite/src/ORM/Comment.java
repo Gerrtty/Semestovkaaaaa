@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Comment implements Serializable {
-    private int comment_id;
+    private int id;
     private int message_id;
     private int user_id;
     private String text;
@@ -21,8 +21,8 @@ public class Comment implements Serializable {
         this.date = date;
     }
 
-    public int getComment_id() {
-        return comment_id;
+    public int getId() {
+        return id;
     }
 
     public int getMessage_id() {
@@ -41,8 +41,8 @@ public class Comment implements Serializable {
         return date;
     }
 
-    public void setComment_id(int comment_id) {
-        this.comment_id = comment_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setMessage_id(int message_id) {
