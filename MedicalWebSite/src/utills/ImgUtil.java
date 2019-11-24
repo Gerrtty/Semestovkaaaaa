@@ -19,7 +19,7 @@ public class ImgUtil {
         Part filePart = null;
 
         try {
-            filePart = request.getPart("photo");
+            filePart = request.getPart("ava");
 
             if(filePart != null) {
                 inputStream = filePart.getInputStream();

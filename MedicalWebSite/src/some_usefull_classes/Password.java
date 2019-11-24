@@ -16,6 +16,7 @@ public class Password {
     }
 
     public String hash(String s) {
+
         StringBuffer stringBuffer = new StringBuffer();
 
         try {
@@ -29,9 +30,7 @@ public class Password {
             }
 
 
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
 

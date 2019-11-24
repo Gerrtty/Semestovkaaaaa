@@ -48,7 +48,7 @@ public class UserDAO implements DAO<User> {
 
         } catch (SQLException e) {
             e.printStackTrace();
-//            System.out.println("adding to data base failed");
+            Logger.red_write("adding to data base failed");
         }
 
     }
@@ -64,10 +64,6 @@ public class UserDAO implements DAO<User> {
     }
 
     public void update() {
-
-    }
-
-    public void delete() {
 
     }
 

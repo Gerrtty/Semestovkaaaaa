@@ -27,13 +27,14 @@
 <div style="font-family:Comfortaa;font-size: 120%; margin: 20px 0px 0px 30px"><br/> </div>
 
 
-<p style="font-size: small">Загрузите вашу фотографию</p>
-<img wight="150" height="150" src="photo/userPhoto.png">
+<%--<p style="font-size: small">Загрузите вашу фотографию</p>--%>
+
+<%--<img wight="150" id="avatar" height="150" src="photo/userPhoto.png">--%>
 
 
-<form method="post" action="uploadServlet">
+<form method="post" action="uploadServlet" enctype="multipart/form-data">
 
-<%--    <input type="file" id="photo" name="photo" multiple accept="image/*,image/jpeg"><br/><br/>--%>
+<%--    <input type="file" id="file" name="photo" multiple accept="image/*,image/jpeg" onchange="previewFile()"><br/><br/>--%>
 
     Имя: <input type="text" name="firstName" id="firstName" required/><br/><br/>
 
@@ -138,6 +139,7 @@
     <script>
 
         $(document).on("click", "#b", function() {
+
             $.ajax({
                 type: "post",
                 url: "uploadServlet",

@@ -6,9 +6,11 @@ import some_usefull_classes.*;
 import utills.AppUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
+@WebServlet("/authorization")
 public class AuthorizationServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -34,14 +36,16 @@ public class AuthorizationServlet extends HttpServlet {
         }
 
         else {
-            Logger.green_write("User is exists");
 
             if(user.getPassword().equals(new Password(password).getPassword())) {
+
                 Logger.green_write("Right password!");
 
                 AppUtils.storeLoginedUser(req.getSession(), user);
 
                 AppUtils.auth(req, resp, user);
+
+                req.getSession().setAttribute("loginedUser", user);
 
             }
 

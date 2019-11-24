@@ -4,6 +4,7 @@ import some_usefull_classes.Email;
 import some_usefull_classes.Phone;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class User implements Serializable {
     private List<String> roles;
     private BufferedImage ava;
     private byte[] imgData;
+    private String token;
 
     public byte[] getImgData() {
         return imgData;
@@ -197,5 +199,13 @@ public class User implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
     }
 }

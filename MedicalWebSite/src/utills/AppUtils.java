@@ -83,7 +83,9 @@ public class AppUtils {
         int redirectId = -1;
 
         try {
-            redirectId = Integer.parseInt(req.getParameter("redirectId"));
+            if(req.getParameter("redirectId") != null) {
+                redirectId = Integer.parseInt(req.getParameter("redirectId"));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,15 +7,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26072e50-1d88-4679-b068-1cca4355c073" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/servlets/LogoutServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utills/CookieUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MedicalWebSite_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MedicalWebSite_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MedicalWebSite_war_exploded/forum.ftlh" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MedicalWebSite_war_exploded/forum.ftlh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MedicalWebSite_war_exploded/list_of_clinics.ftlh" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MedicalWebSite_war_exploded/list_of_clinics.ftlh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MedicalWebSite_war_exploded/reg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MedicalWebSite_war_exploded/reg.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ORM/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ORM/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servlets/AuthorizationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/AuthorizationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlets/RandomNumsServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlets/Serv.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlets/ForumServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/ForumServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlets/ListOfClinicsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/ListOfClinicsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlets/MainPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/MainPageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlets/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/RegistrationServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servlets/SetPhotoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/SetPhotoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlets/TestFreeMarker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlets/TestServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlets/UserProfileServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/UserProfileServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/some_usefull_classes/Password.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/some_usefull_classes/Password.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utills/AppUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utills/AppUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utills/ImgUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utills/ImgUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/forum.ftlh" beforeDir="false" afterPath="$PROJECT_DIR$/web/forum.ftlh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/list_of_clinics.ftlh" beforeDir="false" afterPath="$PROJECT_DIR$/web/list_of_clinics.ftlh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/reg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/reg.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,85 +44,33 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/reg.jsp">
+        <entry file="file://$PROJECT_DIR$/src/servlets/ForumServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="146" selection-start-line="146" selection-end-line="146" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/account.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="36" column="92" selection-start-line="36" selection-start-column="81" selection-end-line="36" selection-end-column="92" />
-              <folding>
-                <element signature="n#!!doc;n#jsp:root#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/servlets/SetPhotoServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="84" column="58" lean-forward="true" selection-start-line="84" selection-start-column="58" selection-end-line="84" selection-end-column="58" />
+            <state relative-caret-position="242">
+              <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-end-line="12" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#doGet#0;class#ForumServlet#0" />
+                <element signature="e#583#650#1" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+        <entry file="file://$PROJECT_DIR$/src/servlets/UserProfileServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utills/AppUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utills/ImgUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DAO/UserDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/servlets/AuthorizationServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+            <state relative-caret-position="286">
+              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,8 +85,8 @@
       <list>
         <option value="Jsp File" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -134,15 +96,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/servlets/MainPageServlet.java" />
-        <option value="$PROJECT_DIR$/web/freemarkerTest.jsp" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/web/test.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/templates/t.ftlh" />
-        <option value="$PROJECT_DIR$/web/registration.ftlh" />
         <option value="$PROJECT_DIR$/src/servlets/TestFreeMarker.java" />
-        <option value="$PROJECT_DIR$/src/servlets/ForumServlet.java" />
-        <option value="$PROJECT_DIR$/src/servlets/ListOfClinicsServlet.java" />
         <option value="$PROJECT_DIR$/web/auth.html" />
         <option value="$PROJECT_DIR$/src/servlets/AuthServlet.java" />
         <option value="$PROJECT_DIR$/web/index.html" />
@@ -158,33 +112,41 @@
         <option value="$PROJECT_DIR$/src/config/SecurityUtils.java" />
         <option value="$PROJECT_DIR$/src/config/UrlPatternUtils.java" />
         <option value="$PROJECT_DIR$/src/wrappers/UserRoleRequestWrapper.java" />
-        <option value="$PROJECT_DIR$/src/servlets/UserProfileServlet.java" />
         <option value="$PROJECT_DIR$/src/filters/SecurityFilter.java" />
         <option value="$PROJECT_DIR$/src/servlets/AjaxServlet.java" />
         <option value="$PROJECT_DIR$/src/servlets/RandomNumsServlet.java" />
         <option value="$PROJECT_DIR$/src/servlets/Serv.java" />
         <option value="$PROJECT_DIR$/web/nums.html" />
         <option value="$PROJECT_DIR$/web/authorization.jsp" />
-        <option value="$PROJECT_DIR$/src/ORM/User.java" />
         <option value="$PROJECT_DIR$/src/ORM/Text.java" />
         <option value="$PROJECT_DIR$/src/ORM/Message.java" />
         <option value="$PROJECT_DIR$/src/DAO/MessageDAO.java" />
         <option value="$PROJECT_DIR$/src/DAO/ReviewDaO.java" />
         <option value="$PROJECT_DIR$/src/DAO/BuildingDAO.java" />
         <option value="$PROJECT_DIR$/src/ORM/Building.java" />
-        <option value="$PROJECT_DIR$/src/utills/ImgUtil.java" />
         <option value="$PROJECT_DIR$/web/reg.html" />
         <option value="$PROJECT_DIR$/src/some_usefull_classes/Email.java" />
         <option value="$PROJECT_DIR$/src/some_usefull_classes/isCorrect.java" />
         <option value="$PROJECT_DIR$/src/some_usefull_classes/Phone.java" />
-        <option value="$PROJECT_DIR$/src/servlets/RegistrationServlet.java" />
         <option value="$PROJECT_DIR$/web/account.jsp" />
-        <option value="$PROJECT_DIR$/web/reg.jsp" />
-        <option value="$PROJECT_DIR$/src/DAO/UserDAO.java" />
-        <option value="$PROJECT_DIR$/src/servlets/AuthorizationServlet.java" />
         <option value="$PROJECT_DIR$/src/utills/AppUtils.java" />
+        <option value="$PROJECT_DIR$/web/list_of_clinics.ftlh" />
+        <option value="$PROJECT_DIR$/src/DAO/UserDAO.java" />
+        <option value="$PROJECT_DIR$/src/some_usefull_classes/Password.java" />
+        <option value="$PROJECT_DIR$/src/utills/ImgUtil.java" />
         <option value="$PROJECT_DIR$/src/servlets/SetPhotoServlet.java" />
+        <option value="$PROJECT_DIR$/web/reg.jsp" />
+        <option value="$PROJECT_DIR$/web/forum.ftlh" />
+        <option value="$PROJECT_DIR$/src/ORM/User.java" />
+        <option value="$PROJECT_DIR$/src/utills/CookieUtil.java" />
+        <option value="$PROJECT_DIR$/src/servlets/LogoutServlet.java" />
+        <option value="$PROJECT_DIR$/src/servlets/RegistrationServlet.java" />
+        <option value="$PROJECT_DIR$/src/servlets/AuthorizationServlet.java" />
+        <option value="$PROJECT_DIR$/src/servlets/MainPageServlet.java" />
+        <option value="$PROJECT_DIR$/src/servlets/ForumServlet.java" />
+        <option value="$PROJECT_DIR$/src/servlets/ListOfClinicsServlet.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/servlets/UserProfileServlet.java" />
       </list>
     </option>
   </component>
@@ -207,7 +169,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,15 +205,11 @@
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MedicalWebSite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -392,18 +350,20 @@
       <workItem from="1574173909507" duration="15351000" />
       <workItem from="1574196828558" duration="26986000" />
       <workItem from="1574272883222" duration="4998000" />
-      <workItem from="1574347684887" duration="3190000" />
+      <workItem from="1574347684887" duration="3957000" />
+      <workItem from="1574451451927" duration="2034000" />
+      <workItem from="1574601462723" duration="8168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66385000" />
+    <option name="totallyTimeSpent" value="77354000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="7" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8937677" visible="true" weight="0.1814301" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8937677" visible="true" weight="0.18569905" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -413,7 +373,7 @@
       <window_info id="Web" order="7" sideWeight="0.10623229" side_tool="true" weight="0.2524013" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.1395856" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.23664123" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.09487459" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -477,28 +437,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/registration.ftlh" />
-    <entry file="file://$PROJECT_DIR$/src/servlets/ForumServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html" />
-    <entry file="file://$PROJECT_DIR$/src/servlets/RandomServlet.java" />
-    <entry file="file://$PROJECT_DIR$/web/auth.html" />
-    <entry file="file://$PROJECT_DIR$/src/UserAccount.java" />
-    <entry file="jar://$PROJECT_DIR$/../libs/javax.servlet-api-3.0.1.jar!/javax/servlet/GenericServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/some_usefull_classes/FreeMarkerConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="667">
@@ -523,16 +461,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/TestFreeMarker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/TestFreeMarker.java" />
     <entry file="file://$PROJECT_DIR$/web/registration.html" />
     <entry file="file://$PROJECT_DIR$/web/uploadPhoto.jsp" />
     <entry file="file://$PROJECT_DIR$/web/addClinic.html">
@@ -598,58 +527,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/UserProfileServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/servlets/AuthServlet.java" />
     <entry file="file://$PROJECT_DIR$/src/servlets/AjaxServlet.java" />
-    <entry file="file://$PROJECT_DIR$/src/servlets/MainPageServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/Serv.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/ListOfClinicsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/RandomNumsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/Serv.java" />
+    <entry file="file://$PROJECT_DIR$/src/servlets/RandomNumsServlet.java" />
     <entry file="file://$PROJECT_DIR$/web/nums.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
@@ -737,16 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/RegistrationServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/authorization.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -761,47 +632,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ORM/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/TestServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="21" column="63" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/user_profile.ftlh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utills/ImgUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAO/UserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/TestServlet.java" />
     <entry file="jar://$PROJECT_DIR$/../libs/javax.servlet-api-3.0.1.jar!/javax/servlet/http/HttpServlet.class">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -811,20 +642,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/AuthorizationServlet.java">
+    <entry file="file://$PROJECT_DIR$/web/account.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        <state relative-caret-position="660">
+          <caret line="36" column="92" selection-start-line="36" selection-start-column="81" selection-end-line="36" selection-end-column="92" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#jsp:root#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utills/AppUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
+        <state relative-caret-position="205">
+          <caret line="90" column="9" lean-forward="true" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/list_of_clinics.ftlh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/some_usefull_classes/Password.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="5245" column="41" lean-forward="true" selection-start-line="5245" selection-end-line="5246" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="79" column="57" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utills/ImgUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -833,25 +705,103 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/reg.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
+        <state relative-caret-position="462">
+          <caret line="162" column="25" lean-forward="true" selection-start-line="162" selection-start-column="25" selection-end-line="162" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/account.jsp">
+    <entry file="file://$PROJECT_DIR$/web/forum.ftlh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="36" column="92" selection-start-line="36" selection-start-column="81" selection-end-line="36" selection-end-column="92" />
+        <state relative-caret-position="198">
+          <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/user_profile.ftlh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ORM/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="208" column="8" selection-start-line="208" selection-start-column="8" selection-end-line="208" selection-end-column="21" />
           <folding>
-            <element signature="n#!!doc;n#jsp:root#0;n#!!top" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4621#4622#0" expanded="true" />
+            <element signature="e#4655#4656#0" expanded="true" />
+            <element signature="e#4687#4688#0" expanded="true" />
+            <element signature="e#4715#4716#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/servlets/SetPhotoServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="84" column="58" lean-forward="true" selection-start-line="84" selection-start-column="58" selection-end-line="84" selection-end-column="58" />
+        <state relative-caret-position="418">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/RegistrationServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utills/CookieUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="79" selection-start-line="19" selection-start-column="79" selection-end-line="19" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/AuthorizationServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/LogoutServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/MainPageServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/ListOfClinicsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -860,8 +810,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="4" />
+        <state relative-caret-position="110">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/ForumServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#doGet#0;class#ForumServlet#0" />
+            <element signature="e#583#650#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/UserProfileServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

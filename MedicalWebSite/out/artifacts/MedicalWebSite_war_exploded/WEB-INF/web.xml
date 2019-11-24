@@ -50,15 +50,6 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>freeMarker</servlet-name>
-        <servlet-class>servlets.TestFreeMarker</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>freeMarker</servlet-name>
-        <url-pattern>/f</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
         <servlet-name>user_profile</servlet-name>
         <servlet-class>servlets.UserProfileServlet</servlet-class>
     </servlet>
@@ -75,31 +66,5 @@
         <servlet-name>uploadServlet</servlet-name>
         <url-pattern>/uploadServlet</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>check</servlet-name>
-        <servlet-class>servlets.AjaxServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>check</servlet-name>
-        <url-pattern>/check</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>random</servlet-name>
-        <servlet-class>servlets.RandomNumsServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>random</servlet-name>
-        <url-pattern>/random</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>s</servlet-name>
-        <servlet-class>servlets.Serv</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>s</servlet-name>
-        <url-pattern>/s</url-pattern>
-    </servlet-mapping>
+
 </web-app>
