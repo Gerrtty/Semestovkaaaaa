@@ -39,12 +39,18 @@
 }</style>
 
 <p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG" , alt = "wait"></p>
-<h4 style="text-align: right;">Личный кабинет:</h4>
 
-<p style="text-align: right; font-weight: bold">
-    <a href="registration" class="button7">Зарегестрироваться</a>
-    / <a href="authorization" class="button7" style="font-weight: bold">Вход</a>
-</p><br/>
+<%
+    if(request.getSession().getAttribute("loginedUser") == null) { %>
+        <%@include file="includes/head_not_logined.jsp" %>
+
+<%  }
+    else { %>
+        <%@include file="includes/head_logined.jsp" %>
+<%    }
+    %>
+
+
 <div>
 <h3 style="text-align: center;">Здравствуйте, если вы живете в Казани и ищете хорошую клинику,&nbsp;</h3>
 <h3 style="text-align: center;">то этот сайт поможет вам в этом.</h3>

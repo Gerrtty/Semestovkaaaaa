@@ -61,12 +61,11 @@ public class RegServlet extends HttpServlet {
                            new Password(pass),
                            user_phone);
 
-                Logger.green_write("User is created");
-
                 errorString = "ok";
 
                 HttpSession session = req.getSession();
-                session.setAttribute("loginedUser", user);
+
+                session.setAttribute("loginedUser",  new UserDAO().getUserByLogin(login));
             }
         }
 

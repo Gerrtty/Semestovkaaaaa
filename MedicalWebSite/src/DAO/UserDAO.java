@@ -23,6 +23,16 @@ public class UserDAO implements DAO<User> {
 
     private static String userByLogin = "SELECT * from semestrovka.User";
 
+    private static String updatestring = "UPDATE semestrovka.User set path = ? where user_id = ?";
+
+    public UserDAO(User user) {
+        this.user = user;
+    }
+
+    public UserDAO() {
+
+    }
+
 
     @Override
     public Optional<User> get(int id) {
@@ -34,6 +44,8 @@ public class UserDAO implements DAO<User> {
         return null;
     }
 
+
+    @Override
     public void add(User user) {
 
         try {
@@ -46,6 +58,8 @@ public class UserDAO implements DAO<User> {
             preparedStatement.setString(6, user.getAbout_user());
 
             preparedStatement.executeUpdate();
+
+            Logger.green_write("User saved in data base");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,20 +94,18 @@ public class UserDAO implements DAO<User> {
                 if(login.equals(email.getEmail())) {
                     Logger.green_write("User is exists");
 
-                    InputStream inputStream = null;
+                    User user = new User(rs.getInt("user_id"),
+                            rs.getString("firstName"),
+                            rs.getString("lastName"),
+                            new Email(rs.getString("email")),
+                            rs.getString("password"),
+                            rs.getString("gender"),
+                            rs.getString("aboute_user"),
+                            new Phone(rs.getString("phone")));
 
-                    Blob blob = rs.getBlob("photo");
-                    if(blob != null) {
-                        inputStream = blob.getBinaryStream();
-                    }
+                    user.setPath(rs.getString("path"));
 
-                    return new User(rs.getString("firstName"),
-                                    rs.getString("lastName"),
-                                    new Email(rs.getString("email")),
-                                    rs.getString("password"),
-                                    rs.getString("gender"),
-                                    rs.getString("aboute_user"),
-                                    new Phone(rs.getString("phone")));
+                    return user;
                 }
             }
 
@@ -104,6 +116,19 @@ public class UserDAO implements DAO<User> {
             return null;
         }
         return null;
+
+    }
+
+    public void setPath() {
+        try {
+            PreparedStatement preparedStatement = ConnectionToDataBase.getConnection().prepareStatement(updatestring);
+            preparedStatement.setString(1, user.getPath());
+            preparedStatement.setInt(2, user.getId());
+            preparedStatement.executeUpdate();
+            Logger.green_write("Update successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

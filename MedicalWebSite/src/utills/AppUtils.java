@@ -68,8 +68,6 @@ public class AppUtils {
         // This fields is not mandatory, can be null
         user.setPhone(phone);
 
-        System.out.println(phone.getPhone());
-
         userDAO.add(user);
 
         Logger.green_write("User is created");
@@ -99,6 +97,7 @@ public class AppUtils {
         }
 
         HttpSession session = req.getSession();
+        session.setAttribute("loginedUser", user);
         session.setAttribute("auth", true);
     }
 

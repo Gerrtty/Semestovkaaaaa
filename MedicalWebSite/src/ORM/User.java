@@ -19,6 +19,7 @@ public class User implements Serializable, interfaces.ImgUtil {
     private InputStream photo;
     private Phone phone;
     private String role;
+    private String path;
 
     private String token;
     private String img;
@@ -40,9 +41,10 @@ public class User implements Serializable, interfaces.ImgUtil {
 
     }
 
-    public User(String firstName, String lastName, Email email, String password, String gender,
+    public User(int id, String firstName, String lastName, Email email, String password, String gender,
              String about_user, Phone phone) {
 
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -163,5 +165,13 @@ public class User implements Serializable, interfaces.ImgUtil {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

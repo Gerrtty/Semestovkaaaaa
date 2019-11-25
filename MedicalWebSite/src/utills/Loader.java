@@ -12,12 +12,17 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Loader {
-    private static String filePath = "/home/yuliya/Desktop/imgs/";
+    private static String filePath = "/home/yuliya/Desktop/Smestrovka/MedicalWebSite/web/images";
     private static int maxFileSize = 5000 * 1024;
     private static int maxMemSize = 5000 * 1024;
+    private ImgUtil obj;
 
-    public void load(HttpServletRequest request) {
+    public Loader(ImgUtil obj) {
+        this.obj = obj;
+    }
 
+    public String load(HttpServletRequest request) {
+        String file_name = "";
         File file;
 
         String contentType = request.getContentType();
@@ -48,11 +53,17 @@ public class Loader {
 
                         String fileName = fi.getName();
 
-                        file = new File(filePath + fileName) ;
+                        String folder = getFolder(obj);
+                        file_name = fileName(fileName, obj);
 
-                        fi.write(file) ;
+                        String realPath = filePath + folder + file_name;
 
-                        Logger.green_write("Путь загрузки: " + filePath + fileName);
+                        file = new File(realPath) ;
+
+                        System.out.println(file_name);
+
+                        fi.write(file);
+                        Logger.green_write("Путь загрузки: " + realPath);
 
                     }
 
@@ -61,22 +72,20 @@ public class Loader {
             }
 
             catch(Exception ex) {
-                System.out.println(ex);
+                ex.printStackTrace();
             }
         }
+
+        return file_name;
+
     }
 
-    public String getFileName(String origin, ImgUtil obj) {
-        int id = obj.getId();
+    public String getFolder(ImgUtil obj) {
+        return obj.folderName();
+    }
 
-        String folder = obj.folderName();
-
-        System.out.println(folder);
-
-        String extension = origin.substring(origin.indexOf("."));
-        System.out.println(extension);
-
-        return folder + id + extension;
+    public String fileName(String origin, ImgUtil obj) {
+        return obj.getId() + origin.substring(origin.indexOf("."));
     }
 }
 

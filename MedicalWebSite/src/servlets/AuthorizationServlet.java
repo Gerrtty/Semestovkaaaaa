@@ -28,6 +28,8 @@ public class AuthorizationServlet extends HttpServlet {
 
         User user = new UserDAO().getUserByLogin(new Email(login));
 
+        System.out.println(user.getPath());
+
         if(user == null) {
             Logger.red_write("User is not exists");
             req.setAttribute("errorMessage", "Error");
