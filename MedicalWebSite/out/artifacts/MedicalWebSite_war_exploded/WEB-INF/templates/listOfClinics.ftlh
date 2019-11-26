@@ -9,8 +9,9 @@
 <body>
 
 <h2 style="text-align: center">List of clinics</h2>
-<form style="text-align: center">
-    <input type="search">
+
+<form style="text-align: center" method="post" action="search">
+    <input type="search" name="search">
     <input type="submit" value="Search">
 </form>
 
@@ -22,7 +23,7 @@
             <p>Town ${building.address.town} st. ${building.address.street} number ${building.address.number}</p>
         </li>
     </#list>
-    
+
 </ul>
 </body>
 </html>

@@ -1,10 +1,8 @@
 package servlets;
 
-import DAO.BuildingDAO;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import freemarker.template.TemplateExceptionHandler;
 import some_usefull_classes.Logger;
 import utills.FreeMarker;
 import utills.SearchUtil;
@@ -17,15 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/listOfClinics")
-public class ListOfClinicsServlet extends HttpServlet {
+@WebServlet("/search")
+public class SearchServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Logger.green_write("Get method from ListOfClinicsServlet servlet is called");
+        Logger.green_write("Get method from SearchServlet Servlet is called");
 
         ServletContext servletContext = getServletContext();
         Configuration cfg = new FreeMarker().getCfg(servletContext);
@@ -34,10 +32,7 @@ public class ListOfClinicsServlet extends HttpServlet {
 
         Map root = new HashMap();
 
-        BuildingDAO buildingDAO = new BuildingDAO();
-        List buildings = buildingDAO.getAll();
-
-        root.put("buildings", buildings);
+        root.put("buildings", get((String) req.getAttribute("search")));
 
         Template t = cfg.getTemplate("listOfClinics.ftlh");
         try {
@@ -45,12 +40,24 @@ public class ListOfClinicsServlet extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Logger.green_write("Post method from ListOfClinicsServlet servlet is called");
+        Logger.green_write("Post method from SearchServlet Servlet is called");
 
+        String search = req.getParameter("search");
+
+        req.setAttribute("search", search);
+
+        doGet(req,resp);
+
+//        SearchUtil searchUtil = new SearchUtil();
+//        List buildings = searchUtil.getBuildingsByDescription(search);
+    }
+
+
+    public List get(String s) {
+        return new SearchUtil().getBuildingsByDescription(s);
     }
 }

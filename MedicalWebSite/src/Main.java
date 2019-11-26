@@ -1,12 +1,9 @@
-import DAO.BuildingDAO;
-import ORM.Building;
+import utills.SearchUtil;
 
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        BuildingDAO buildingDAO = new BuildingDAO();
-        List<Building> arrayList = buildingDAO.getAll();
-        arrayList.stream().forEach(s -> System.out.println(s.getAddress().getStreet()));
+        SearchUtil searchUtil = new SearchUtil();
+        searchUtil.getBuildingsByDescription("dentist").stream().forEach(s -> System.out.println(s.getAddress().getStreet()));
     }
 }

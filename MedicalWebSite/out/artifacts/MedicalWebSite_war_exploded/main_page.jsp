@@ -50,19 +50,11 @@
 <%    }
     %>
 
+<p style="text-align: right;"><a href="about" class="button7">О сайте</a></p></br>
+<p style="text-align: right;"><a href="phone" class="button7">Контактные телефоны</a></p></br>
+<p style="text-align: right"><a href="forum" class="button7">Форум</a></p></br></br></br></br>
+<h1 style="text-align: center; color: darkblue ; background: #00BFFF; " ></br>Клиники и больницы в городе Казань</h1></br></br></br>
+<h2 style="text-align: center;"><a href="listOfClinics" class="button7">Список клиник</a></h2></br>
 
-<div>
-<h3 style="text-align: center;">Здравствуйте, если вы живете в Казани и ищете хорошую клинику,&nbsp;</h3>
-<h3 style="text-align: center;">то этот сайт поможет вам в этом.</h3>
-<h3 style="text-align: center;">На этом сайте вы сможете найти оценки и отзывы услуг разных клиник от&nbsp;</h3>
-<h3 style="text-align: center;">реальных людей.</h3>
-<h3 style="text-align: center;">Для вашего удобства</h3>
-<h3 style="text-align: center;">на сайте отобраны лучшие клиники вышего города, с перечнем</h3>
-<h3 style="text-align: center;">предоставляемых ими услуг.</h3>
-<h3 style="text-align: center;"><a href="listOfClinics">Список клиник</a></h3>
-<h3 style="text-align: center;">Если у Вас остались вопросы, которые Вы хотите обсудить,</h3>
-<h3 style="text-align: center;">приглашаем посетить наш <a href="forum">Форум.</a></h3>
-</div>
-<p style="text-align: center;"><img width = "850" height = "280" src="photo/slide-medical-staff-2.jpg" , alt = "wait"></p>
 </body>
 </html>
