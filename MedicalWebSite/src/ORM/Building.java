@@ -1,21 +1,23 @@
 package ORM;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Building implements Serializable, interfaces.ImgUtil {
 
     private int id;
     private Address address;
-    private List<Building> list_of_building;
     private static String folder = "/building/";
+    private String path;
+    private String name;
 
-    public Building() {
-        list_of_building = new ArrayList<>();
+    public Building(int id, Address address) {
+        this.id = id;
+        this.address = address;
     }
 
     public Building(Address address) {
+
         this.address = address;
     }
 
@@ -38,5 +40,21 @@ public class Building implements Serializable, interfaces.ImgUtil {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

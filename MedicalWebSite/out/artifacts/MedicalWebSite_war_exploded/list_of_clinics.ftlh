@@ -28,6 +28,7 @@
 <style>body{
     background: url("photo/background.png"); background-size: 100% 220%;
 }</style>
+
 <p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG" , alt = "wait"></p>
 <h4 style="text-align: right;">Личный кабинет:</h4>
 <p style="text-align: right;"><strong><a href="style.css" class="button7">Зарегестрироваться</style></a></strong> / <strong><a href="" class="button7">Вход</a></strong></p><br/>
@@ -36,6 +37,7 @@
     <input type="search">
     <input type="submit" value="Найти">
 </form>
+
 <table style="height: 260px;" width="834">
     <br>
     <tr>

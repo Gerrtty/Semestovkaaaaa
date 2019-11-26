@@ -1,11 +1,12 @@
-import DAO.UserDAO;
-import ORM.User;
-import some_usefull_classes.Email;
+import DAO.BuildingDAO;
+import ORM.Building;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        User user = new UserDAO().getUserByLogin(new Email("yulu.2000@mail.ru"));
-        UserDAO userDAO = new UserDAO(user);
-
+        BuildingDAO buildingDAO = new BuildingDAO();
+        List<Building> arrayList = buildingDAO.getAll();
+        arrayList.stream().forEach(s -> System.out.println(s.getAddress().getStreet()));
     }
 }
