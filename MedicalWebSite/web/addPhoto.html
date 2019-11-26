@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add photo</title>
+</head>
+<body>
+<header>
+    <h2 style="text-align: center">Add photo</h2>
+</header>
+
+<br/><br/>
+<p> Фото</p>
+
+<img id="ava" width="200" height="150" src="photo/userPhoto.png" alt="wait">
+
+<form method="post" action="addPhoto" enctype="multipart/form-data">
+    <input type="file" id="file" name="photo" multiple accept="image/*,image/jpeg" onchange="previewFile()"> <br/> <br/>
+    <input type="submit" value="Save photo">
+</form>
+</body>
+</html>

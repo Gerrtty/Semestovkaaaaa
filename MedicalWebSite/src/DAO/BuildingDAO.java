@@ -17,7 +17,15 @@ import java.util.Optional;
 
 public class BuildingDAO implements DAO<Building> {
 
+    public static int id = 10;
+
+    private static String updatestring = "UPDATE semestrovka.Building set path = ? where building_id = ?";
+
     private static String SELECT_ALL = "SELECT * from semestrovka.Building";
+
+    private static String sql = "INSERT INTO semestrovka.Building (name, town, district, street, number)" +
+            "VALUES (?, ?, ?, ?, ?)";
+
 
     public BuildingDAO() {
         super();
@@ -67,6 +75,27 @@ public class BuildingDAO implements DAO<Building> {
     @Override
     public void add(Building building) {
 
+        Address address = building.getAddress();
+
+        try {
+            PreparedStatement preparedStatement = ConnectionToDataBase.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, building.getName());
+            preparedStatement.setString(2, address.getTown());
+            preparedStatement.setString(3, address.getDistrict());
+            preparedStatement.setString(4, address.getStreet());
+            preparedStatement.setInt(5, address.getNumber());
+
+            preparedStatement.executeUpdate();
+
+            Logger.green_write("Building saved in data base");
+
+            id++;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Logger.red_write("adding to data base failed");
+        }
+
     }
 
     @Override
@@ -108,5 +137,17 @@ public class BuildingDAO implements DAO<Building> {
         }
 
         return list;
+    }
+
+    public void setPath(Building building) {
+        try {
+            PreparedStatement preparedStatement = ConnectionToDataBase.getConnection().prepareStatement(updatestring);
+            preparedStatement.setString(1, building.getPath());
+            preparedStatement.setInt(2, building.getId());
+            preparedStatement.executeUpdate();
+            Logger.green_write("Update successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
