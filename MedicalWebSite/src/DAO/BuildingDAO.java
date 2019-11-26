@@ -7,6 +7,7 @@ import some_usefull_classes.ConnectionToDataBase;
 import some_usefull_classes.Logger;
 
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -76,5 +77,36 @@ public class BuildingDAO implements DAO<Building> {
     @Override
     public void delete(Building building) {
 
+    }
+
+    public List<Building> getBuildingsBySQLString(String sql, String s) {
+
+        List<Building> list = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = ConnectionToDataBase.getConnection().prepareStatement(sql);
+
+            ps.setString(1, s);
+
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Address address = new Address(rs.getString("town"),
+                        rs.getString("street"),
+                        rs.getString("district"),
+                        rs.getInt("number"));
+
+                Building building = new Building(rs.getInt("building_id"), address);
+                building.setName(rs.getString("name"));
+                building.setPath(rs.getString("path"));
+                list.add(building);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 }

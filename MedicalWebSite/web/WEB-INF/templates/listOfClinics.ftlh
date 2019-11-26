@@ -12,7 +12,9 @@
 
 <form style="text-align: center" method="post" action="search">
     <input type="search" name="search">
-    <input type="submit" value="Search">
+    <input type="submit" value="Search" placeholder="Input service name">
+    <p>Where price: </p>
+    <input style="width: 10%" type="text" name="price">
 </form>
 
 <ul>

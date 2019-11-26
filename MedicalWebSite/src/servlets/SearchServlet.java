@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @WebServlet("/search")
@@ -32,7 +31,23 @@ public class SearchServlet extends HttpServlet {
 
         Map root = new HashMap();
 
-        root.put("buildings", get((String) req.getAttribute("search")));
+        if(req.getAttribute("price") == null || ((String) req.getAttribute("price")).length() == 0) {
+            root.put("buildings", new SearchUtil().getBuildingsByDescription(((String) req.getAttribute("search"))));
+        }
+
+        else {
+            String par = (String) req.getAttribute("price");
+
+            if(par.charAt(0) != '>' && par.charAt(0) != '<') {
+                Logger.red_write("Error input");
+                resp.sendRedirect("search");
+            }
+
+            else {
+                root.put("buildings", new SearchUtil().getBuildingsByDescriptionWithPrice(
+                        (String) req.getAttribute("search"), (String) req.getAttribute("price")));
+            }
+        }
 
         Template t = cfg.getTemplate("listOfClinics.ftlh");
         try {
@@ -46,18 +61,12 @@ public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Logger.green_write("Post method from SearchServlet Servlet is called");
 
-        String search = req.getParameter("search");
+        req.setAttribute("search", req.getParameter("search"));
 
-        req.setAttribute("search", search);
+        req.setAttribute("price", req.getParameter("price"));
 
         doGet(req,resp);
 
-//        SearchUtil searchUtil = new SearchUtil();
-//        List buildings = searchUtil.getBuildingsByDescription(search);
     }
 
-
-    public List get(String s) {
-        return new SearchUtil().getBuildingsByDescription(s);
-    }
 }
