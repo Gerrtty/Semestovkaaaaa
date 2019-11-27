@@ -48,7 +48,7 @@
     else { %>
         <%@include file="includes/head_logined.jsp" %>
 <%    }
-    %>
+%>
 
 <p style="text-align: right;"><a href="about" class="button7">О сайте</a></p></br>
 <p style="text-align: right;"><a href="phone" class="button7">Контактные телефоны</a></p></br>

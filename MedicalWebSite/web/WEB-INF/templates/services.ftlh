@@ -1,3 +1,4 @@
+<#import "head.ftlh" as head>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +63,7 @@
         left:2px;
     }
 </style>
+
 <script type="text/javascript">
     window.onload = function(){
         document.getElementById('add').onclick = startKomm;
@@ -93,16 +95,14 @@
         box-shadow: 0 3px rgb(33,147,90) inset;
     }
 </style>
+
+
 <style>body{
         background: url("photo/background.png"); background-size: 100% 220%;
     }</style>
 
+<@head.head/>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap..">
-<p style="text-align: center;"><img width = "450" height = "70" src="../../photo/siteName.PNG" alt = "wait"></p>
-
-
-<p style="text-align: right"><a href="mainPage" class="button7">Main page</a></p></br>
 <p style="text-align: right"><a href="/clinic?id=${building.id}" class="button7">Back</a></p>
 
 <h1 style="text-align: center">${building.name}</h1><br/><br/>

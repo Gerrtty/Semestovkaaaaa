@@ -27,14 +27,8 @@
 <div style="font-family:Comfortaa;font-size: 120%; margin: 20px 0px 0px 30px"><br/> </div>
 
 
-<%--<p style="font-size: small">Загрузите вашу фотографию</p>--%>
-
-<%--<img wight="150" id="avatar" height="150" src="photo/userPhoto.png">--%>
-
 
 <form method="post" action="uploadServlet" enctype="multipart/form-data">
-
-<%--    <input type="file" id="file" name="photo" multiple accept="image/*,image/jpeg" onchange="previewFile()"><br/><br/>--%>
 
     Имя: <input type="text" name="firstName" id="firstName" required/><br/><br/>
 
@@ -64,8 +58,9 @@
     Пароль: <input type="password" id="pass" name="pass" required/>
 
         <div id="block_check" name="block_check"></div>
-
+        <div id="err"></div>
     </div>
+
     Повторите пароль: <input type = "password" id="confirm_pass" name="confirm_pass" required></br></br>
     Номер телефона: <input type = "text" id="phone" name="phone" required></br></br>
 
@@ -135,6 +130,33 @@
 
     </script>
 
+    <script>
+        function passcorr() {
+            var pass = document.getElementById("input_test").value;
+            var button = document.getElementById("submit");
+            var p = /^[a-zA-Z0-9]+$/;
+            if (p.test(pass))
+            {
+                err = ""; // ничего не пишем так как вывести нужно только одно Успешно
+                // button.disabled = false;
+            } else {
+                // button.disabled = true;
+                err = "<p color=\'red\'> Введены недопустимые символы! Разрешены только латинские буквы и цифры!</p>";
+                document.getElementById("err").innerHTML=err;
+                exit; // прерываем так как есть ошибка
+            }
+            if (pass.length>=6&&pass.length<=20){
+                // button.disabled = false;
+                err = "<p color=\'green\'>Успешно!</p>";
+            } else {
+                // button.disabled = true;
+                err = "<p color=\'red\'>Пароль неверной длины. Пароль должен быть не менее 6 и не более 20 символов!</p>";
+                document.getElementById("err").innerHTML=err;
+                exit;
+            }
+            document.getElementById("err").innerHTML=err;
+        }
+    </script>
 
     <script>
 
