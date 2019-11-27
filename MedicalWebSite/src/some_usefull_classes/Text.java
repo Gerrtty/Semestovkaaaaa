@@ -1,4 +1,4 @@
-package ORM;
+package some_usefull_classes;
 
 import java.util.Date;
 

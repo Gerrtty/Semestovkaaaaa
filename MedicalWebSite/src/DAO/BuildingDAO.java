@@ -1,6 +1,6 @@
 package DAO;
 
-import ORM.Address;
+import some_usefull_classes.Address;
 import ORM.Building;
 import interfaces.DAO;
 import some_usefull_classes.ConnectionToDataBase;
@@ -26,14 +26,40 @@ public class BuildingDAO implements DAO<Building> {
     private static String sql = "INSERT INTO semestrovka.Building (name, town, district, street, number)" +
             "VALUES (?, ?, ?, ?, ?)";
 
+    private static String GET_BY_ID = "SELECT * from semestrovka.Building where building_id = ?";
+
 
     public BuildingDAO() {
         super();
     }
 
+
     @Override
     public Optional<Building> get(int id) {
+
+
         return Optional.empty();
+    }
+
+    public Building getByID(int id) {
+
+        ResultSet rs = null;
+
+        try {
+            PreparedStatement ps = ConnectionToDataBase.getConnection().prepareStatement(GET_BY_ID);
+
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            rs.next();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return createBuilding(rs);
     }
 
     @Override
@@ -121,15 +147,7 @@ public class BuildingDAO implements DAO<Building> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Address address = new Address(rs.getString("town"),
-                        rs.getString("street"),
-                        rs.getString("district"),
-                        rs.getInt("number"));
-
-                Building building = new Building(rs.getInt("building_id"), address);
-                building.setName(rs.getString("name"));
-                building.setPath(rs.getString("path"));
-                list.add(building);
+                list.add(createBuilding(rs));
             }
 
         } catch (SQLException e) {
@@ -149,5 +167,27 @@ public class BuildingDAO implements DAO<Building> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Building createBuilding(ResultSet rs) {
+
+        Building building = null;
+
+        try {
+            Address address = new Address(rs.getString("town"),
+                    rs.getString("district"),
+                    rs.getString("street"),
+                    rs.getInt("number"));
+
+            building = new Building(rs.getInt("building_id"), address);
+            building.setName(rs.getString("name"));
+            building.setPath(rs.getString("path"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return building;
+
     }
 }

@@ -1,7 +1,7 @@
 package servlets;
 
 import DAO.BuildingDAO;
-import ORM.Address;
+import some_usefull_classes.Address;
 import ORM.Building;
 import some_usefull_classes.Logger;
 

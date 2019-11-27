@@ -9,6 +9,7 @@ public class ServiceBuildinng implements Serializable {
     private int service_id;
     private int building_id;
     private int price;
+    private String description;
 
     public ServiceBuildinng() {
 
@@ -64,5 +65,13 @@ public class ServiceBuildinng implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

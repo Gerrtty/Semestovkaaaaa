@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>clinic</title>
@@ -9,8 +7,8 @@
 
 <body>
 
+<br>
 <style>
-
     .rating {
         float:left;
     }
@@ -63,15 +61,11 @@
         top:2px;
         left:2px;
     }
-
 </style>
-
 <script type="text/javascript">
-
     window.onload = function(){
         document.getElementById('add').onclick = startKomm;
     };
-
     function startKomm(){
         var text = document.getElementById('txt').value;
         var komm = document.createElement('p');
@@ -80,7 +74,6 @@
         document.getElementById('komments').appendChild(komm);
         return true;
     }
-
 </script>
 
 <style>
@@ -100,58 +93,31 @@
         box-shadow: 0 3px rgb(33,147,90) inset;
     }
 </style>
-
 <style>body{
-    background: url("photo/background.png"); background-size: 100% 220%;
-}</style>
+        background: url("photo/background.png"); background-size: 100% 220%;
+    }</style>
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap..">
-<p style="text-align: center;"><img width = "450" height = "70" src="photo/siteName.PNG" , alt = "wait"></p>
-<h4 style="text-align: right;">Личный кабинет:</h4>
-<p style="text-align: right; font-weight: bold"><a href="" class="button7">Зарегестрироваться</a>
-    / <a href="" class="button7">Вход</a></p><br/>
-<p style="text-align: right"><a href="main" class="button7">Главная страница</a></p></br>
-<p style="text-align: right"><a href="listOfClinics" class="button7">Вернуться к списку клиник</a></p></br>
+<p style="text-align: center;"><img width = "450" height = "70" src="../../photo/siteName.PNG" alt = "wait"></p>
 
 
-        <h1 id="name_of_clinic"><strong>Name of clinic</strong></h1>
-            <p id="address">address</p>
-            <img width="500" height="300" src="photo/clinic/be%20healfy.jpg">
-<h3 style="text-align: left"><a href="services">Просмотреть услуги и их цены</a> </h3>
-<form>
-    <label>Оставьте отзыв:</label><br />
-    <textarea rows="5" cols="50" id="txt"></textarea><br />
-    <input type="button" value="Добавить отзыв" id="add" />
-</form>
+<p style="text-align: right"><a href="mainPage" class="button7">Main page</a></p></br>
+<p style="text-align: right"><a href="/clinic?id=${building.id}" class="button7">Back</a></p>
 
+<h1 style="text-align: center">${building.name}</h1><br/><br/>
 
-<h4>${date}</h4>
+<ul>
+    <h3>List of services: </h3>
+</ul>
 
-<p>${comment}</p>
+<ul>
+    <#list services as service>
+        <li>
+            <a href="/service?id=${service.service_id}">${service.description}: Price = ${service.price}</a><br/><br/>
+        </li>
+    </#list>
+</ul>
 
-<fieldset class="rating" style="background-color: white">
-
-    <legend><h2 id="name">${name}</h2></legend>
-
-    <table style="width: 800px" height="30px">
-
-        <div>
-            <td style="width: 200px">
-                <div class="date">
-                    <img wight="80" height="80" src="photo/userPhoto.png">
-                    <h4 id="date">${dat}</h4>
-                </div>
-            </td>
-        </div>
-
-        <td>
-            <div class="text_comment">
-                <p id="text_comment">${text_comment}</p>
-                <p id="score">Оценка: ${score}</p>
-            </div>
-        </td>
-
-    </table>
-</fieldset>
 </body>
 </html>

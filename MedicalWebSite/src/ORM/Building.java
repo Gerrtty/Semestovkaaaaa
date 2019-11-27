@@ -1,5 +1,7 @@
 package ORM;
 
+import some_usefull_classes.Address;
+
 import java.io.Serializable;
 
 

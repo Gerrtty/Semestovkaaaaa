@@ -6,6 +6,7 @@ public class Service implements Serializable {
 
     private int service_id;
     private String description;
+    private int price;
 
     public Service() {
 
@@ -29,5 +30,13 @@ public class Service implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
     }
 }

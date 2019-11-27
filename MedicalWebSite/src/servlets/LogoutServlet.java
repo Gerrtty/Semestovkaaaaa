@@ -18,6 +18,8 @@ public class LogoutServlet extends HttpServlet {
         Logger.green_write("LogoutServlet get method is called");
 
         new CookieUtil().clearCookie(req, resp);
+
+        req.getSession().removeAttribute("loginedUser");
         resp.sendRedirect("/authorization");
     }
 }

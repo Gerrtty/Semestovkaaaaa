@@ -1,7 +1,7 @@
 package DAO;
 
 import ORM.Message;
-import ORM.Text;
+import some_usefull_classes.Text;
 import ORM.User;
 import interfaces.DAO;
 import some_usefull_classes.ConnectionToDataBase;
