@@ -1,4 +1,4 @@
-<%--
+<%@ page import="ORM.User" %><%--
   Created by IntelliJ IDEA.
   User: yuliya
   Date: 17.11.19
@@ -50,11 +50,21 @@
 <%    }
 %>
 
+
 <p style="text-align: right;"><a href="about" class="button7">О сайте</a></p></br>
 <p style="text-align: right;"><a href="phone" class="button7">Контактные телефоны</a></p></br>
-<p style="text-align: right"><a href="forum" class="button7">Форум</a></p></br></br></br></br>
+<p style="text-align: right"><a href="forum_main" class="button7">Форум</a></p></br></br></br></br>
 <h1 style="text-align: center; color: darkblue ; background: #00BFFF; " ></br>Клиники и больницы в городе Казань</h1></br></br></br>
 <h2 style="text-align: center;"><a href="listOfClinics" class="button7">Список клиник</a></h2></br>
+
+<% if(request.getSession().getAttribute("loginedUser") != null) {
+    User u = (User) request.getSession().getAttribute("loginedUser");
+    String role = u.getRole();
+    System.out.println(role);
+    if(role != null && role.equals("admin")) { %>
+<h2 style="text-align: center;"><a href="add" class="button7">Добавить клинику</a></h2></br>
+<%}
+} %>
 
 </body>
 </html>

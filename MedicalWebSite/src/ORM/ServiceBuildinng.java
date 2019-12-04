@@ -20,11 +20,13 @@ public class ServiceBuildinng implements Serializable {
         this.building = building;
         this.service_id = service.getService_id();
         this.building_id = building.getId();
+        this.price = price;
     }
 
     public ServiceBuildinng(int service_id, int building_id, int price) {
         this.service_id = service_id;
         this.building_id = building_id;
+        this.price = price;
     }
 
     public Service getService() {

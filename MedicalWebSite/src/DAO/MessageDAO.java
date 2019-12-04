@@ -9,7 +9,6 @@ import some_usefull_classes.Logger;
 
 import java.sql.*;
 import java.util.List;
-import java.util.Optional;
 
 public class MessageDAO implements DAO<Message> {
 
@@ -19,8 +18,8 @@ public class MessageDAO implements DAO<Message> {
     private static String GET_MESSAGE = "select * from semestrovka.User";
 
     @Override
-    public Optional<Message> get(int id) {
-        return Optional.empty();
+    public Message get(int id) {
+        return new Message(new Text());
     }
 
     @Override
@@ -73,7 +72,7 @@ public class MessageDAO implements DAO<Message> {
             st.close();
 
         } catch (SQLException ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
             return null;
         }
         return null;

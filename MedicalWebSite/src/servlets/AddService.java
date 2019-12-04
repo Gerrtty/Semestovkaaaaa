@@ -26,6 +26,7 @@ public class AddService extends HttpServlet {
         Logger.green_write("Post method from AddService servlet is called");
 
         String service = req.getParameter("service");
+
         int price = Integer.parseInt(req.getParameter("price"));
 
         int service_id = new ServiceDAO().getIdByDescription(service);
@@ -37,5 +38,7 @@ public class AddService extends HttpServlet {
 
         ServiceBuildingDAO serviceBuildingDAO = new ServiceBuildingDAO();
         serviceBuildingDAO.add(serviceBuildinng);
+
+        resp.sendRedirect("/addService");
     }
 }

@@ -18,7 +18,7 @@ public class ClinicServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Logger.green_write("Get method from ClinicServlet servlet is called");
         int id = Integer.parseInt(req.getParameter("id"));
-        Building building = new BuildingDAO().getByID(id);
+        Building building = new BuildingDAO().get(id);
         req.getSession().setAttribute("building", building);
         req.getRequestDispatcher("clinic.jsp").forward(req, resp);
     }

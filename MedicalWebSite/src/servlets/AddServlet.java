@@ -33,7 +33,7 @@ public class AddServlet extends HttpServlet {
         BuildingDAO buildingDAO = new BuildingDAO();
         buildingDAO.add(building);
 
-        building.setId(buildingDAO.id);
+        building.setId(buildingDAO.getLastId());
 
         req.getSession().setAttribute("building", building);
 

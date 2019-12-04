@@ -13,11 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class BuildingDAO implements DAO<Building> {
-
-    public static int id = 10;
 
     private static String updatestring = "UPDATE semestrovka.Building set path = ? where building_id = ?";
 
@@ -28,20 +25,36 @@ public class BuildingDAO implements DAO<Building> {
 
     private static String GET_BY_ID = "SELECT * from semestrovka.Building where building_id = ?";
 
+    public int getLastId() {
+
+        String sql = "select max(building_id) from semestrovka.Building";
+
+        try {
+
+            Statement statement = ConnectionToDataBase.getConnection().createStatement();
+            statement.executeQuery(sql);
+
+
+            ResultSet rs = statement.getResultSet();
+
+            rs.next();
+
+            return rs.getInt("max(building_id)");
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
 
     public BuildingDAO() {
         super();
     }
 
-
-    @Override
-    public Optional<Building> get(int id) {
-
-
-        return Optional.empty();
-    }
-
-    public Building getByID(int id) {
+    public Building get(int id) {
 
         ResultSet rs = null;
 
@@ -115,7 +128,6 @@ public class BuildingDAO implements DAO<Building> {
 
             Logger.green_write("Building saved in data base");
 
-            id++;
 
         } catch (SQLException e) {
             e.printStackTrace();

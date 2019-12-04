@@ -15,7 +15,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 public class ReviewDaO implements DAO<Review> {
 
@@ -29,8 +28,8 @@ public class ReviewDaO implements DAO<Review> {
     private static String SELECT_ALL = "SELECT * from semestrovka.Review";
 
     @Override
-    public Optional<Review> get(int id) {
-        return Optional.empty();
+    public Review get(int id) {
+        return new Review();
     }
 
     @Override

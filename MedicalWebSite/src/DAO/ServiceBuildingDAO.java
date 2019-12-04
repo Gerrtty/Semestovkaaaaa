@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ServiceBuildingDAO implements DAO<ServiceBuildinng> {
 
@@ -31,8 +30,8 @@ public class ServiceBuildingDAO implements DAO<ServiceBuildinng> {
             "semestrovka.Service.service_id where builing_service_id = ?";
 
     @Override
-    public Optional<ServiceBuildinng> get(int id) {
-        return Optional.empty();
+    public ServiceBuildinng get(int id) {
+        return new ServiceBuildinng();
     }
 
     @Override

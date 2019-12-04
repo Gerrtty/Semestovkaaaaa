@@ -174,4 +174,12 @@ public class User implements Serializable, interfaces.ImgUtil {
     public void setPath(String path) {
         this.path = path;
     }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
 }

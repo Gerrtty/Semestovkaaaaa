@@ -8,12 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
+
 
 public class ServiceDAO implements DAO<Service> {
+
     @Override
-    public Optional<Service> get(int id) {
-        return Optional.empty();
+    public Service get(int id) {
+        return new Service();
     }
 
     @Override

@@ -6,7 +6,6 @@ import some_usefull_classes.*;
 
 import java.sql.*;
 import java.util.List;
-import java.util.Optional;
 
 public class UserDAO implements DAO<User> {
 
@@ -34,8 +33,8 @@ public class UserDAO implements DAO<User> {
 
 
     @Override
-    public Optional<User> get(int id) {
-        return Optional.empty();
+    public User get(int id) {
+        return new User();
     }
 
     @Override
@@ -102,6 +101,7 @@ public class UserDAO implements DAO<User> {
                             rs.getString("aboute_user"),
                             new Phone(rs.getString("phone")));
 
+                    user.setRole(rs.getString("role"));
                     user.setPath(rs.getString("path"));
 
                     return user;
